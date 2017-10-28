@@ -1,0 +1,19 @@
+{
+  "name": "jjdl-js",
+  "version": "0.1.0-1",
+  "license": "GPL-3.0+",
+  "scripts": {
+    "build": "coffee -o dist/ src/"
+  },
+  "devDependencies": {
+    "coffeescript": "^2.0.2"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "iconv-lite": "^0.4.19",
+    "jquery": "^3.2.1",
+    "jsdom": "^11.3.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
+  }
+}

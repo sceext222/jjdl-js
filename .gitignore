@@ -1,0 +1,6 @@
+
+/tmp
+/dist
+
+# node.js (npm)
+node_modules/
