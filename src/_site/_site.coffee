@@ -45,7 +45,7 @@ class Site  # base site
     # TODO support multi-thread download
     # download with single thread
     o = {}
-    for i in @meta.chapter
+    for i of @meta.chapter
       # check url
       uri = @meta.chapter[i].uri
       if (! uri?) or (uri.trim() is '')
@@ -79,7 +79,7 @@ class Site  # base site
     # TODO DEBUG meta info (from index)
 
     raw = await @dl_chapters()
-    for i in raw
+    for i of raw
       @chapter[i] = @parse_one_chapter raw[i]
 
     {

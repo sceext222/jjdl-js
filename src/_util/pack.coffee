@@ -47,9 +47,16 @@ _pack_one_chapter = (data, index) ->
   # TODO zfill to chapter count
   chapter_name = "第 #{index} 章  #{data.meta.chapter[index].title}"
   o += "#{chapter_name}\n"
-  o += "#{data.chapter[index].text}\n"  # raw chapter text
+
+  # main text
+  main_text = data.chapter[index].text
+  mt = []
+  for i in main_text.split('\n')
+    mt.push('  ' + i)  # add 2 space before each line
+
+  o += "#{mt.join('\n')}\n"  # raw chapter text
   # add words count
-  words_count = data.chapter[index].text.length
+  words_count = main_text.length
   o += "jjdl-js:: words count #{words_count} \n\n"
   o
 
@@ -57,12 +64,12 @@ _pack_one_chapter = (data, index) ->
 pack = (data) ->
   # words count first
   words_count = 0
-  for i in data.chapter
+  for i of data.chapter
     words_count += data.chapter[i].text.length
 
   o = _pack_meta data, words_count
   # pack each chapter
-  for i in data.chapter
+  for i of data.chapter
     o += _pack_one_chapter data, i
   o += _pack_last data, words_count
   # DEBUG words count
@@ -76,7 +83,7 @@ pack_filename = (meta) ->
   t = new Date().toISOString()
   time = t.split('T')[0].split('-').join('') + '-' + t.split('T')[1].split('.')[0].split(':').join('')
 
-  "#{main}-time-#{config.PACK_FILE}"
+  "#{main}-#{time}#{config.PACK_FILE}"
 
 
 module.exports = {

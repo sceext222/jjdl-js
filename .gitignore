@@ -2,6 +2,7 @@
 /tmp
 /dist
 /cache
+/dl
 
 # node.js (npm)
 node_modules/

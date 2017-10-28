@@ -13,7 +13,7 @@ _fs_rename = util.promisify fs.rename
 _check_parent_dir = (filename) ->  # async
   parent = path.dirname filename
   if ! await file_exist(parent)
-    _check_parent_dir parent  # check parent first
+    await _check_parent_dir parent  # check parent first
     # try to create it
     await _fs_mkdir parent
 

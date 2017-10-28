@@ -3,9 +3,11 @@
 #
 # TODO command-line args
 #
+path = require 'path'
 
-al = require './al'
+config = require './config'
 util = require './util'
+al = require './al'
 site = require './site'
 
 
@@ -18,11 +20,12 @@ main = (args) ->  # async
   data = await core.main()
   # save meta file
   filename = data.meta.title.split('\n').join(' ').split(' ').join('-')
-  await al.save_file "#{config.META_FILE[0]}#{filename}#{config.META_FILE[1]}", JSON.stringify(data.meta, '', '    ') + '\n'
+  meta_file = path.join config.OUTPUT_DIR, "#{config.META_FILE[0]}#{filename}#{config.META_FILE[1]}"
+  await al.save_file meta_file, JSON.stringify(data.meta, '', '    ') + '\n'
 
   text = core.pack(data)
   # save result text file
-  await al.save_file util.pack_filename(data.meta), text
+  await al.save_file path.join(config.OUTPUT_DIR, util.pack_filename(data.meta)), text
 
 
 # start from main

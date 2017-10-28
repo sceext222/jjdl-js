@@ -1,6 +1,6 @@
 # config.coffee, jjdl-js/src/
 
-P_VERSION = 'jjdl-js version 0.1.0-1 test20171029 0311'
+P_VERSION = 'jjdl-js version 0.1.0-1 test20171029 0417'
 
 
 LOG_PREFIX = 'jjdl-js'
@@ -13,6 +13,7 @@ LOG_P = {
 }
 
 CACHE_DIR = 'cache'
+OUTPUT_DIR = 'dl'
 
 META_FILE = ['jjdl-', '-meta.json']
 PACK_FILE = '-jjdl.txt'
@@ -25,6 +26,7 @@ module.exports = {
   LOG_P
 
   CACHE_DIR
+  OUTPUT_DIR
 
   META_FILE
   PACK_FILE

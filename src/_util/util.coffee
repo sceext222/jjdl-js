@@ -1,20 +1,24 @@
 # util.coffee, jjdl-js/src/_util/
 
 { JSDOM } = require 'jsdom'
-$ = require 'jquery'
+jquery = require 'jquery'
 
 
 parse_html = (raw) ->
   dom = new JSDOM raw
-  $ dom.window
+  jquery dom.window
 
-$_get_all_text = (raw) ->
-  $('*', raw).contents().filter () ->
+$_get_all_text = ($, raw) ->
+  set = $(raw).add $('*', raw)
+  set.contents().filter () ->
     @nodeType is 3
 
-$_to_text = (raw) ->
-  raw.map (x) ->
-    $(x).text()
+$_to_text = ($, raw) ->
+  a = Array.from raw
+  o = []
+  for i in a
+    o.push $(i).text()
+  o
 
 
 last_update = ->

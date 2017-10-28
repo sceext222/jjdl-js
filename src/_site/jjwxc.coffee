@@ -14,6 +14,17 @@ _clean_text = (raw, join = '\n') ->
       o.push one
   o.join join
 
+_clean_index_text = (raw, join = ' ') ->
+  _clean_text [raw], join
+
+_clean_title = (raw) ->
+  o = []
+  for i in raw.split('\n')
+    one = i.trim()
+    if one != ''
+      o.push one
+  o.join('\n').split(' ').join('')
+
 
 class Jjwxc extends Site
 
@@ -27,12 +38,12 @@ class Jjwxc extends Site
     }
     # main novel text info
     sptd = $ '.sptd'
-    o.title = _clean_text $(sptd[0]).text(), ' '
-    o.mark = _clean_text $(sptd[sptd.length - 1]).text(), ' '
+    o.title = _clean_title $(sptd[0]).text()
+    o.mark = _clean_text util.$_to_text($, util.$_get_all_text($, sptd[sptd.length - 1]))
 
     readtd = $ '.readtd'
-    o.wenan = _clean_text util.$_to_text(util.$_get_all_text(readtd[0]))
-    o.info = _clean_text util.$_to_text(util.$_get_all_text(readtd[1])), ' '
+    o.wenan = _clean_text util.$_to_text($, util.$_get_all_text($, readtd[0]))
+    o.info = _clean_text util.$_to_text($, util.$_get_all_text($, readtd[1])), ' '
 
     # chapter list
     o.chapter = {}
@@ -45,23 +56,23 @@ class Jjwxc extends Site
         continue  # ignore this item
 
       one = {
-        title: _clean_text a.text(), ' '
+        title: _clean_index_text a.text()
         uri: a.attr 'href'
       }
       # TODO get more chapter info
-      index = $($('td', raw_list[i])[0]).text()
+      index = $($('td', raw_list[i])[0]).text().trim()
       o.chapter[index] = one
     o
 
   parse_one_chapter: ($) ->
     noveltext = $ 'div.noveltext'
-    raw = util.$_get_all_text noveltext
+    raw = util.$_get_all_text $, noveltext
     # remove no use text
-    raw = raw.not util.$_get_all_text($('> div', noveltext)[0..1])
-    raw = raw.not util.$_get_all_text($('#favorite_3', noveltext))
+    raw = raw.not util.$_get_all_text($, $('> div', noveltext)[0..1])
+    raw = raw.not util.$_get_all_text($, $('#favorite_3', noveltext))
     # TODO more clean
 
-    text = _clean_text util.$_to_text(raw)
+    text = _clean_text util.$_to_text($, raw)
 
     {
       text
