@@ -1,6 +1,7 @@
 
 /tmp
 /dist
+/cache
 
 # node.js (npm)
 node_modules/
