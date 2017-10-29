@@ -12,10 +12,10 @@ class Site  # base site
     @chapter = {}
 
   # download index page
-  dl_index: ->  # async
-    # NOTE use cache by default
-    page = await cache.load_page @uri
-    util.parse_html page
+  dl_index: (uri) ->  # async
+    # use cache by default
+    page = await cache.load_page uri
+    util.parse_html page, uri
 
   # parse index page to get meta data
   #
@@ -83,7 +83,7 @@ class Site  # base site
   # }
   main: (opt) ->  # async
     # process index page
-    $ = await @dl_index()
+    $ = await @dl_index @uri
     @meta = @parse_index $
     # add meta
     @meta.url = @uri
@@ -94,10 +94,9 @@ class Site  # base site
     al.logi "chapter #{Object.keys(@meta.chapter).length}: #{@meta.title}  @#{@meta.author.name}  (#{@meta.page_title})"
 
     raw = await @dl_chapters()
-
     al.logd "parse chapters .. . "
     for i of raw
-      $ = util.parse_html raw[i]  # parse page (html) here
+      $ = util.parse_html raw[i], @meta.chapter[i].uri  # parse page (html) here
       @chapter[i] = @parse_one_chapter $
 
     {

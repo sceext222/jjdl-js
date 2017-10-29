@@ -1,7 +1,10 @@
 {
-  "name": "jjdl-js",
-  "version": "0.1.0",
+  "name": "jjdl",
+  "version": "0.2.0-1",
+  "description": "jjdl-js: A simple text download program. ",
+  "homepage": "https://github.com/sceext222/jjdl-js",
   "license": "GPL-3.0+",
+  "repository": "sceext222/jjdl-js",
   "scripts": {
     "build": "coffee -o dist/ src/"
   },
@@ -9,11 +12,16 @@
     "coffeescript": "^2.0.2"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "iconv-lite": "^0.4.19",
     "jquery": "^3.2.1",
     "jsdom": "^11.3.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5"
+  },
+  "optionalDependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "iconv-lite": "^0.4.19"
+  },
+  "engines": {
+    "node": "8.x"
   }
 }

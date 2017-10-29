@@ -1,11 +1,12 @@
 # site.coffee, jjdl-js/src/
 
 Jjwxc = require './_site/jjwxc'
+Mjjwxc = require './_site/mjjwxc'
 
 
 SITE_LIST = {
   'jjwxc': Jjwxc
-  # TODO
+  'mjjwxc': Mjjwxc
 }
 
 
