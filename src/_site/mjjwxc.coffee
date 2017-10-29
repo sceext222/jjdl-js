@@ -27,7 +27,7 @@ class Mjjwxc extends Site
 
     # title and author
     o.title = $('div.b.module > h2.big.o').text().split('>')[1].trim()
-    author_a = $('#info #left > li:first-child a')
+    author_a = $ '#info #left > li:first-child a'
     o.author = {
       name: author_a.text()
       url: author_a.prop 'href'
@@ -40,7 +40,7 @@ class Mjjwxc extends Site
     # chapter list
     o.chapter = {}
 
-    raw_list = $('div.b.module > div:nth-child(3) > a')
+    raw_list = $ 'div.b.module > div:nth-child(3) > a'
     for i in [0... raw_list.length]
       # TODO ignore bad chapter
 
@@ -64,4 +64,4 @@ class Mjjwxc extends Site
       text
     }
 
-module.exports = Mjjwxc
+module.exports = Mjjwxc  # class

@@ -2,11 +2,13 @@
 
 Jjwxc = require './_site/jjwxc'
 Mjjwxc = require './_site/mjjwxc'
+Myushuwu = require './_site/myushuwu'
 
 
 SITE_LIST = {
   'jjwxc': Jjwxc
   'mjjwxc': Mjjwxc
+  'myushuwu': Myushuwu
 }
 
 
