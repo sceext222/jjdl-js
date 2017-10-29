@@ -20,7 +20,10 @@ _pack_meta = (data, words_count) ->
   o += "jjdl-js:: #{config.P_VERSION}\n\n"
 
   # title and page_title
-  o += "#{data.meta.title}\n"
+  title = "#{data.meta.title}  @#{data.meta.author.name}"
+  if data.meta.author.url?
+    title += " <#{data.meta.author.url}>"
+  o += "#{title}\n"
   o += "(#{data.meta.page_title})\n\n"
 
   # wenan, info, mark  # for jjwxc
@@ -40,15 +43,18 @@ _pack_meta = (data, words_count) ->
 _pack_last = (data, words_count) ->
   o = '\n'
   o += "jjdl-js:: URL #{data.meta.url}\n"
-  o += "jjdl-js:: title #{data.meta.title}\n"
+  o += "jjdl-js:: title #{data.meta.title}  @#{data.meta.author.name}\n"
   o += "    chapter count #{Object.keys(data.chapter).length}, words count #{words_count} \n"
   o += "jjdl-js: last_update #{last_update()}\n\n"
   o
 
 _pack_one_chapter = (data, index) ->
   o = '\n'
-  # TODO zfill to chapter count
-  chapter_name = "第 #{index} 章  #{data.meta.chapter[index].title}"
+  # TODO improve zfill to chapter count
+  c = "#{index}"
+  if c.length < 2
+    c = '0' + c
+  chapter_name = "第 #{c} 章  #{data.meta.chapter[index].title}  #{data.meta.chapter[index].desc}"
   o += "#{chapter_name}\n"
 
   # main text
@@ -72,20 +78,31 @@ pack = (data) ->
     o += _pack_one_chapter data, i
   o += _pack_last data, words_count
   # DEBUG words count
-  al.logd "words count #{words_count}"
+  al.logi "words count #{words_count}"
   o
 
-pack_filename = (meta) ->
-  # TODO improve name
-  main = meta.title.split('\n').join(' ').split(' ').join('-')
-  # time
-  t = new Date().toISOString()
-  time = t.split('T')[0].split('-').join('') + '-' + t.split('T')[1].split('.')[0].split(':').join('')
 
-  "#{main}-#{time}#{config.PACK_FILE}"
+_make_main_name = (meta) ->
+  title = meta.title.split('\n').join(' ').split(' ').join('-')
+  author = meta.author.name.trim()
+  "#{title}@#{author}"
+
+_make_time_name = ->
+  # TODO support GMT+0800 (CST)
+  t = new Date().toISOString()
+  date = t.split('T')[0].split('-').join('')
+  time_s = t.split('T')[1].split('.')[0].split(':').join('')
+  "#{date}-#{time_s}"
+
+pack_filename = (meta) ->
+  "#{_make_main_name meta}-#{_make_time_name meta}#{config.PACK_FILE}"
+
+meta_filename = (meta) ->
+  "#{config.META_FILE[0]}#{_make_main_name meta}#{config.META_FILE[1]}"
 
 
 module.exports = {
   pack
   pack_filename
+  meta_filename
 }

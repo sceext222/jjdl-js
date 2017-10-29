@@ -27,6 +27,9 @@ $_to_text = ($, raw) ->
 last_update = ->
   "#{new Date().toISOString()}Z"
 
+print_json = (data) ->
+  JSON.stringify(data, '', '    ') + '\n'
+
 
 module.exports = {
   parse_html
@@ -34,4 +37,5 @@ module.exports = {
   $_to_text
 
   last_update
+  print_json
 }

@@ -17,14 +17,6 @@ _clean_text = (raw, join = '\n') ->
 _clean_index_text = (raw, join = ' ') ->
   _clean_text [raw], join
 
-_clean_title = (raw) ->
-  o = []
-  for i in raw.split('\n')
-    one = i.trim()
-    if one != ''
-      o.push one
-  o.join('\n').split(' ').join('')
-
 
 class Jjwxc extends Site
 
@@ -38,8 +30,15 @@ class Jjwxc extends Site
     }
     # main novel text info
     sptd = $ '.sptd'
-    o.title = _clean_title $(sptd[0]).text()
-    o.mark = _clean_text util.$_to_text($, util.$_get_all_text($, sptd[sptd.length - 1]))
+    # title and autor
+    o.title = _clean_index_text $('h1', sptd[0]).text()
+    author_a = $ 'h2 a', sptd[0]
+    o.author = {
+      name: author_a.text()
+      url: author_a.attr 'href'
+    }
+
+    o.mark = _clean_text util.$_to_text($, util.$_get_all_text($, sptd[sptd.length - 1])), '  '
 
     readtd = $ '.readtd'
     o.wenan = _clean_text util.$_to_text($, util.$_get_all_text($, readtd[0]))
@@ -55,11 +54,19 @@ class Jjwxc extends Site
       if a.length < 1
         continue  # ignore this item
 
+      td = $ 'td', raw_list[i]
+      td_time = td[td.length - 1]
+      # get more chapter info
       one = {
         title: _clean_index_text a.text()
+        desc: _clean_index_text $(td[2]).text()
+        words: Number.parseInt($('[itemprop=wordCount]', raw_list[i]).text())
+        time: {
+          update: _clean_index_text $(td_time).text()
+          release: _clean_index_text $(td_time).attr('title')
+        }
         uri: a.attr 'href'
       }
-      # TODO get more chapter info
       index = $($('td', raw_list[i])[0]).text().trim()
       o.chapter[index] = one
     o
@@ -71,6 +78,7 @@ class Jjwxc extends Site
     raw = raw.not util.$_get_all_text($, $('> div', noveltext)[0..1])
     raw = raw.not util.$_get_all_text($, $('#favorite_3', noveltext))
     # TODO more clean
+    # TODO add one line after '作者有话说'
 
     text = _clean_text util.$_to_text($, raw)
 

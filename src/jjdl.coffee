@@ -19,9 +19,8 @@ main = (args) ->  # async
 
   data = await core.main()
   # save meta file
-  filename = data.meta.title.split('\n').join(' ').split(' ').join('-')
-  meta_file = path.join config.OUTPUT_DIR, "#{config.META_FILE[0]}#{filename}#{config.META_FILE[1]}"
-  await al.save_file meta_file, JSON.stringify(data.meta, '', '    ') + '\n'
+  meta_file = path.join config.OUTPUT_DIR, util.meta_filename(data.meta)
+  await al.save_file meta_file, util.print_json(data.meta)
 
   text = core.pack(data)
   # save result text file

@@ -1,5 +1,7 @@
 # _site.coffee, jjdl-js/src/_site/
 
+config = require '../config'
+al = require '../al'
 util = require '../util'
 cache = require '../cache'
 
@@ -25,16 +27,28 @@ class Site  # base site
   #   page_title: ''
   #
   #   title: ''
-  #   wenan: ''  # FIXME jjwxc
-  #   info: ''  # FIXME jjwxc
-  #   mark: ''  # FIXME jjwxc
+  #   author: {
+  #     name: ''
+  #     url: ''
+  #   }
+  #
+  #   wenan: ''  # for jjwxc
+  #   info: ''  # for jjwxc
+  #   mark: ''  # for jjwxc
   #
   #   chapter: {
   #     INDEX: {
   #       title: ''
+  #       desc: ''
+  #       words: -1
+  #       time: {
+  #         update: ''
+  #         release: ''
+  #       }
   #       uri: ''
   #     }
   #   }
+  #   _jjdl_version: ''  # meta TO ADD
   #   _last_update: ''  # meta TO ADD
   # }
   parse_index: ($) ->
@@ -52,8 +66,7 @@ class Site  # base site
         al.logw "skip chapter #{i}: #{@meta.chapter[i].title}  (url = #{uri})"
         continue
       # download with cache
-      page = await cache.load_page uri
-      o[i] = util.parse_html page
+      o[i] = await cache.load_page uri
     o
 
   # return {
@@ -75,12 +88,17 @@ class Site  # base site
     # add meta
     @meta.url = @uri
     @meta.opt = opt
+    @meta._jjdl_version = config.P_VERSION
     @meta._last_update = util.last_update()
-    # TODO DEBUG meta info (from index)
+    # DEBUG meta info (from index page)
+    al.logi "chapter #{Object.keys(@meta.chapter).length}: #{@meta.title}  @#{@meta.author.name}  (#{@meta.page_title})"
 
     raw = await @dl_chapters()
+
+    al.logd "parse chapters .. . "
     for i of raw
-      @chapter[i] = @parse_one_chapter raw[i]
+      $ = util.parse_html raw[i]  # parse page (html) here
+      @chapter[i] = @parse_one_chapter $
 
     {
       @meta
