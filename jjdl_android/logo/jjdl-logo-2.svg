@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1024"
+   height="1024"
+   viewBox="0 0 270.9 270.9"
+   version="1.1"
+   id="svg3705"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="jjdl-logo-2.svg"
+   inkscape:export-filename="/home/sceext2a/._/r/jjdl-js/jjdl_android/logo/jjdl-logo-1024.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96">
+  <defs
+     id="defs3699" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.5505"
+     inkscape:cx="447.1"
+     inkscape:cy="521.5"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer2"
+     showgrid="false"
+     units="px"
+     inkscape:pagecheckerboard="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata3702">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="bg"
+     sodipodi:insensitive="true">
+    <rect
+       style="opacity:1;vector-effect:none;fill:#087862;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       id="rect4571"
+       width="243.4"
+       height="243.4"
+       x="13.76"
+       y="13.76"
+       rx="12.17"
+       ry="12.17" />
+  </g>
+  <g
+     inkscape:label="fg"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-25.97)"
+     sodipodi:insensitive="true">
+    <path
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2119px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 40.59,52.96 v 0 a 13.56,13.56 0 0 0 -13.6,13.57 13.56,13.56 0 0 0 13.6,13.59 13.56,13.56 0 0 0 0.1,0 h 69.41 l 9.5,152.08 -65.41,-43.7 67.71,81.4 H 149 L 160.9,80.12 H 244 V 52.96 h -81.4 -54.2 z"
+       id="path4568"
+       inkscape:connector-curvature="0" />
+    <path
+       style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:0.2119px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 203.3,134.3 a 27.12,27.12 0 0 0 -27.1,27.1 27.12,27.12 0 0 0 27.1,27.1 27.12,27.12 0 0 0 27.1,-27.1 27.12,27.12 0 0 0 -27.1,-27.1 z"
+       id="rect3726"
+       inkscape:connector-curvature="0" />
+  </g>
+</svg>
