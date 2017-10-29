@@ -15,6 +15,9 @@ $_get_all_text = ($, raw) ->
 
 $_to_text = ($, raw) ->
   a = Array.from raw
+  # sort text by document order
+  a = $.uniqueSort a
+
   o = []
   for i in a
     o.push $(i).text()

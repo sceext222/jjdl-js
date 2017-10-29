@@ -14,7 +14,17 @@ clean_html_text = (raw) ->
     o.push one
   o
 
+indent_line = (raw, prefix = '  ') ->
+  a = raw.split '\n'
+  o = []
+  for i in a
+    if i.trim() != ''
+      i = prefix + i
+    o.push i
+  o.join '\n'
+
 
 module.exports = {
   clean_html_text
+  indent_line
 }

@@ -6,6 +6,9 @@ al = require '../al'
 {
   last_update
 } = require './util'
+{
+  indent_line
+} = require './text'
 
 # TODO improve words count
 
@@ -20,9 +23,9 @@ _pack_meta = (data, words_count) ->
   o += "#{data.meta.title}\n"
   o += "(#{data.meta.page_title})\n\n"
 
-  # wenan, info, mark  # FIXME for jjwxc
+  # wenan, info, mark  # for jjwxc
   if data.meta.wenan?
-    o += "#{data.meta.wenan}\n\n"
+    o += "#{indent_line data.meta.wenan}\n\n"
   if data.meta.info?
     o += "#{data.meta.info}\n\n"
   if data.meta.mark?
@@ -35,7 +38,7 @@ _pack_meta = (data, words_count) ->
 
 # last part of final pack text
 _pack_last = (data, words_count) ->
-  o = '\n\n'
+  o = '\n'
   o += "jjdl-js:: URL #{data.meta.url}\n"
   o += "jjdl-js:: title #{data.meta.title}\n"
   o += "    chapter count #{Object.keys(data.chapter).length}, words count #{words_count} \n"
@@ -43,18 +46,14 @@ _pack_last = (data, words_count) ->
   o
 
 _pack_one_chapter = (data, index) ->
-  o = '\n\n'
+  o = '\n'
   # TODO zfill to chapter count
   chapter_name = "第 #{index} 章  #{data.meta.chapter[index].title}"
   o += "#{chapter_name}\n"
 
   # main text
   main_text = data.chapter[index].text
-  mt = []
-  for i in main_text.split('\n')
-    mt.push('  ' + i)  # add 2 space before each line
-
-  o += "#{mt.join('\n')}\n"  # raw chapter text
+  o += "#{indent_line main_text}\n"  # raw chapter text
   # add words count
   words_count = main_text.length
   o += "jjdl-js:: words count #{words_count} \n\n"
