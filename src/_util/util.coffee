@@ -4,8 +4,10 @@
 jquery = require 'jquery'
 
 
-parse_html = (raw) ->
-  dom = new JSDOM raw
+parse_html = (raw, url) ->
+  dom = new JSDOM raw, {
+    url
+  }
   jquery dom.window
 
 $_get_all_text = ($, raw) ->

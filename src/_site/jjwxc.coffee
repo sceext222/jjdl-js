@@ -5,17 +5,8 @@ Site = require './_site'
 util = require '../util'
 
 
-_clean_text = (raw, join = '\n') ->
-  a = util.clean_html_text Array.from(raw)
-  o = []
-  for i in a
-    one = i.trim()
-    if one != ''
-      o.push one
-  o.join join
-
 _clean_index_text = (raw, join = ' ') ->
-  _clean_text [raw], join
+  util.clean_text [raw], join
 
 
 class Jjwxc extends Site
@@ -28,9 +19,10 @@ class Jjwxc extends Site
       site: 'jjwxc'
       page_title: $('title').text().trim()
     }
-    # main novel text info
+
     sptd = $ '.sptd'
-    # title and autor
+    readtd = $ '.readtd'
+    # title and author
     o.title = _clean_index_text $('h1', sptd[0]).text()
     author_a = $ 'h2 a', sptd[0]
     o.author = {
@@ -38,11 +30,9 @@ class Jjwxc extends Site
       url: author_a.attr 'href'
     }
 
-    o.mark = _clean_text util.$_to_text($, util.$_get_all_text($, sptd[sptd.length - 1])), '  '
-
-    readtd = $ '.readtd'
-    o.wenan = _clean_text util.$_to_text($, util.$_get_all_text($, readtd[0]))
-    o.info = _clean_text util.$_to_text($, util.$_get_all_text($, readtd[1])), ' '
+    o.wenan = util.clean_text util.$_to_text($, util.$_get_all_text($, readtd[0]))
+    o.mark = util.clean_text util.$_to_text($, util.$_get_all_text($, sptd[sptd.length - 1])), '  '
+    o.info = util.clean_text util.$_to_text($, util.$_get_all_text($, readtd[1])), ' '
 
     # chapter list
     o.chapter = {}
@@ -80,8 +70,7 @@ class Jjwxc extends Site
     # TODO more clean
     # TODO add one line after '作者有话说'
 
-    text = _clean_text util.$_to_text($, raw)
-
+    text = util.clean_text util.$_to_text($, raw)
     {
       text
     }

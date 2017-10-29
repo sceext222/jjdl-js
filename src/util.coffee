@@ -15,6 +15,7 @@
 } = require './_util/pack'
 {
   clean_html_text
+  clean_text
   indent_line
 } = require './_util/text'
 
@@ -32,5 +33,6 @@ module.exports = {
   meta_filename
 
   clean_html_text
+  clean_text
   indent_line
 }
