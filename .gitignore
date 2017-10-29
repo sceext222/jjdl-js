@@ -4,5 +4,7 @@
 /cache
 /dl
 
+/jjdl_android
+
 # node.js (npm)
 node_modules/
