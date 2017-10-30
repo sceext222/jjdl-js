@@ -73,7 +73,8 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    entryFile: "index.js"
+    entryFile: "index.js",
+    bundleInDebug: true,
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -100,11 +101,11 @@ android {
     defaultConfig {
         applicationId "org.sceext.jjdl"
         minSdkVersion 21
-        targetSdkVersion 22
-        versionCode 1
+        targetSdkVersion 23
         versionName "0.1.0-1"
+        versionCode 1
         ndk {
-            abiFilters "armeabi-v7a"
+            abiFilters "armeabi-v7a", "arm64-v8a"
         }
     }
     splits {
@@ -112,7 +113,7 @@ android {
             reset()
             enable enableSeparateBuildPerCPUArchitecture
             universalApk false  // If true, also generate a universal APK
-            include "armeabi-v7a"
+            include "armeabi-v7a", "arm64-v8a"
         }
     }
     buildTypes {
@@ -126,7 +127,7 @@ android {
         variant.outputs.each { output ->
             // For each separate APK per architecture, set a unique version code as described here:
             // http://tools.android.com/tech-docs/new-build-system/user-guide/apk-splits
-            def versionCodes = ["armeabi-v7a":1]
+            def versionCodes = ["armeabi-v7a":1, "arm64-v8a":2]
             def abi = output.getFilter(OutputFile.ABI)
             //if (abi != null) {  // null for the universal-debug, universal-release variants
             //    output.versionCodeOverride =

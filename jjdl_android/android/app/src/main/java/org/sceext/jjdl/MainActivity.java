@@ -1,5 +1,8 @@
 package org.sceext.jjdl;
 
+import android.os.Bundle;
+import android.graphics.Color;
+
 import com.facebook.react.ReactActivity;
 
 public class MainActivity extends ReactActivity {
@@ -11,5 +14,12 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "jjdl";
+    }
+
+    @Override
+    public void onCreate(Bundle saved) {
+        super.onCreate(saved);
+
+        getWindow().setStatusBarColor(Color.BLACK);
     }
 }
