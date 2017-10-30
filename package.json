@@ -9,7 +9,8 @@
     "build": "coffee -o dist/ src/"
   },
   "devDependencies": {
-    "coffeescript": "^2.0.2"
+    "coffeescript": "^2.0.2",
+    "react-native-cli": "^2.0.1"
   },
   "dependencies": {
     "jquery": "^3.2.1",
