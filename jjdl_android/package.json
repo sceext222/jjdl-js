@@ -9,8 +9,10 @@
 	"dependencies": {
 		"create-react-class": "^15.6.2",
 		"immutable": "^3.8.2",
+		"prop-types": "^15.6.0",
 		"react": "16.0.0-beta.5",
 		"react-native": "0.49.5",
+		"react-native-vector-icons": "^4.4.2",
 		"react-navigation": "^1.0.0-beta.15",
 		"react-redux": "^5.0.6",
 		"redux": "^3.7.2",
