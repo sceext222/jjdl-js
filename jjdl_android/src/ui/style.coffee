@@ -10,13 +10,11 @@ TOP_HEIGHT = 50
 TOP_ICON_SIZE = 30
 TOP_PADDING = 10
 
-TEXT_SIZE = 15  # TODO
+TEXT_SIZE = 15
 TITLE_SIZE = 20
 
 # stylesheet TODO
 
-
-# TODO
 
 module.exports = {
   LEFT_WIDTH

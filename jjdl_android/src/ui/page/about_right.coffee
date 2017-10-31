@@ -9,32 +9,81 @@ PropTypes = require 'prop-types'
   Text
 } = require 'react-native'
 
+co = require '../color'
+ss = require '../style'
+
 Top = require '../sub/top'
+FullScroll = require '../sub/full_scroll'
 
 
 Page = cC {
   displayName: 'PageAboutRight'
   propTypes: {
     navigation: PropTypes.object.isRequired
-    # TODO
+
+    about_right: PropTypes.string.isRequired
   }
 
   _on_back: ->
     @props.navigation.goBack()
 
+  _render_tech: ->
+    # TODO
+    (cE Text, {
+      style: {
+        color: co.TEXT
+      } },
+      'TODO tech'
+    )
+
+  _render_license: ->
+    # TODO
+    (cE Text, {
+      style: {
+        color: co.TEXT
+      } },
+      'TODO license'
+    )
+
+  _render_body: ->
+    if @props.about_right is 'tech'
+      @_render_tech()
+    else
+      @_render_license()
+
   render: ->
+    text = 'LICENSE'
+    if @props.about_right is 'tech'
+      text = '技术'
+
     (cE View, null,
       (cE Top, {
         type: 'left'
-        text: 'TODO'
+        text
         on_nav: @_on_back
         })
-      # TODO body
-      (cE Text, null,
-        'page about right'
+      # body
+      (cE FullScroll, null,
+        @_render_body()
       )
-      # TODO
     )
 }
 
-module.exports = Page
+
+# connect for redux
+{ connect } = require 'react-redux'
+Immutable = require 'immutable'
+
+action = require '../../action/root'
+
+
+mapStateToProps = ($$state, props) ->
+  {
+    about_right: $$state.get 'about_right'
+  }
+
+mapDispatchToProps = (dispatch, props) ->
+  o = Object.assign {}, props
+  o
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(Page)

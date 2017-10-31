@@ -36,7 +36,9 @@ Page = cC {
   propTypes: {
     screenProps: PropTypes.object.isRequired
     navigation: PropTypes.object.isRequired
-    # TODO
+
+    on_show_tech: PropTypes.func.isRequired
+    on_show_license: PropTypes.func.isRequired
   }
 
   _on_menu: ->
@@ -46,11 +48,11 @@ Page = cC {
     @props.navigation.navigate 'right'
 
   _on_show_tech: ->
-    # TODO
+    @props.on_show_tech()
     @_on_show_right()
 
   _on_show_license: ->
-    # TODO
+    @props.on_show_license()
     @_on_show_right()
 
   render: ->
@@ -115,4 +117,23 @@ Page = cC {
     )
 }
 
-module.exports = Page
+
+# connect for redux
+{ connect } = require 'react-redux'
+Immutable = require 'immutable'
+
+action = require '../../action/root'
+
+
+mapStateToProps = ($$state, props) ->
+  {}
+
+mapDispatchToProps = (dispatch, props) ->
+  o = Object.assign {}, props
+  o.on_show_tech = ->
+    dispatch action.set_about_right('tech')
+  o.on_show_license = ->
+    dispatch action.set_about_right('license')
+  o
+
+module.exports = connect(mapStateToProps, mapDispatchToProps)(Page)

@@ -1,6 +1,6 @@
 import { AppRegistry } from 'react-native';
 
-const Main = require('./dist/ui/main');
+const store = require('./dist/store');
 
 
-AppRegistry.registerComponent('jjdl', () => Main);
+AppRegistry.registerComponent('jjdl', store.init());

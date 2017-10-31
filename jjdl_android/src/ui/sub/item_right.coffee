@@ -21,6 +21,7 @@ ItemRight = cC {
     type: PropTypes.string  # 'right' (default), 'check'
     text: PropTypes.string
     is_check: PropTypes.bool
+    bg: PropTypes.string  # background-color
     # children
     on_press: PropTypes.func.isRequired
   }
@@ -42,6 +43,9 @@ ItemRight = cC {
         name = 'check'
       else
         name = null
+    # check not render right
+    if @props.type is null
+      name = null
 
     if name?
       (cE View, {
@@ -62,7 +66,9 @@ ItemRight = cC {
   render: ->
     backgroundColor = co.BG_SEC
     if @props.is_check
-      backgroundColor = co.BG_TOUCH
+      backgroundColor = co.BG_CHECK
+    if @props.bg?
+      backgroundColor = @props.bg
 
     (cE TouchableNativeFeedback, {
       onPress: @props.on_press
