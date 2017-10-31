@@ -74,7 +74,11 @@ _left_icon = (icon, name) ->
 
 Main = DrawerNavigator {
   start: {
-    screen: ScreenStart
+    screen: ({navigation}) ->
+      (cE ScreenStart, {
+        screenProps: {
+          navigation
+        } })
     navigationOptions: {
       drawerLabel: '开始'
       drawerIcon: _left_icon IconF, 'arrow-right'
@@ -95,7 +99,11 @@ Main = DrawerNavigator {
     }
   }
   about: {
-    screen: ScreenAbout
+    screen: ({navigation}) ->
+      (cE ScreenAbout, {
+        screenProps: {
+          navigation
+        } })
     navigationOptions: {
       drawerLabel: '关于'
       drawerIcon: _left_icon IconF, 'info'

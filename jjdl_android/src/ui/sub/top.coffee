@@ -32,7 +32,7 @@ _top_button = (onPress, name) ->
         name
         size: ss.TOP_ICON_SIZE
         style: {
-          color: co.TEXT_SEC
+          color: co.TEXT
         } })
     )
   )
@@ -58,21 +58,28 @@ Top = cC {
       _top_button @props.on_nav, 'menu'
 
   render: ->
-    # TODO top bottom shadow ?
+    paddingLeft = ss.TOP_PADDING
+    if @props.type is 'left'
+      paddingLeft = 0
+
     (cE View, {
       style: {
         backgroundColor: co.BG_TOP
         height: ss.TOP_HEIGHT
         flexDirection: 'row'
         alignItems: 'center'
+
+        borderBottomWidth: 1
+        borderBottomColor: co.BG
       } },
       @_render_left()
       (cE Text, {
         style: {
           flex: 1
           fontSize: ss.TITLE_SIZE
-          color: co.TEXT
+          color: co.TEXT_TITLE
           padding: ss.TOP_PADDING
+          paddingLeft
         } },
         @props.text
       )

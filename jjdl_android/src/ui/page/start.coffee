@@ -15,8 +15,16 @@ PropTypes = require 'prop-types'
 Page = cC {
   displayName: 'PageStart'
   propTypes: {
+    screenProps: PropTypes.object.isRequired
+    navigation: PropTypes.object.isRequired
     # TODO
   }
+
+  _on_show_site: ->
+    @props.navigation.navigate 'site'
+
+  _on_show_log: ->
+    @props.screenProps.navigation.navigate 'log'
 
   render: ->
     (cE View, null,

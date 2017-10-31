@@ -5,7 +5,7 @@
 BG = 'rgb(0, 0, 0)'
 BG_SEC = 'rgb(50, 50, 50)'  # second background
 BG_LEFT = ''  # TODO
-BG_TOP = 'rgb(20, 20, 20)'  # TODO
+BG_TOP = 'rgb(8, 120, 98)'  # TODO
 
 BG_TOUCH = 'rgb(250, 250, 250)'  # button touch background
 

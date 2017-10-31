@@ -15,15 +15,19 @@ Top = require '../sub/top'
 Page = cC {
   displayName: 'PageAboutRight'
   propTypes: {
+    navigation: PropTypes.object.isRequired
     # TODO
   }
+
+  _on_back: ->
+    @props.navigation.goBack()
 
   render: ->
     (cE View, null,
       (cE Top, {
         type: 'left'
         text: 'TODO'
-        on_nav: () -> null
+        on_nav: @_on_back
         })
       # TODO body
       (cE Text, null,
