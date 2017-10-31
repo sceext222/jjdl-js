@@ -22,6 +22,8 @@ Page = cC {
     navigation: PropTypes.object.isRequired
 
     cache_path: PropTypes.string
+    is_cleaning: PropTypes.bool.isRequired
+    is_doing: PropTypes.bool.isRequired
 
     on_clear_cache: PropTypes.func.isRequired
   }
@@ -30,7 +32,8 @@ Page = cC {
     @props.navigation.navigate 'DrawerOpen'
 
   _render_button: ->
-    if @props.cache_path?
+    # not show clean button if cleaning or doing
+    if @props.cache_path? and (! @props.is_cleaning) and (! @props.is_doing)
       (cE Button, {
         text: '清除'
         on_press: @props.on_clear_cache
@@ -40,6 +43,8 @@ Page = cC {
     cache_path = '没有内容'
     if @props.cache_path?
       cache_path = @props.cache_path
+    if @props.is_cleaning
+      cache_path = '正在清除 .. . '
 
     (cE View, {
       style: {
@@ -77,17 +82,20 @@ Page = cC {
 Immutable = require 'immutable'
 
 action = require '../../action/root'
+op = require '../../action/op'
 
 
 mapStateToProps = ($$state, props) ->
   {
     cache_path: $$state.get 'cache_path'
+    is_cleaning: $$state.get 'is_cleaning'
+    is_doing: $$state.get 'is_doing'
   }
 
 mapDispatchToProps = (dispatch, props) ->
   o = Object.assign {}, props
   o.on_clear_cache = ->
-    # TODO
+    dispatch op.clear_cache()
   o
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(Page)

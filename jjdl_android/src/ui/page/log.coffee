@@ -45,7 +45,10 @@ Page = cC {
     if @props.is_doing
       text = '正在处理 .. . '
 
-    (cE View, null,
+    (cE View, {
+      style: {
+        flex: 1
+      } },
       (cE Top, {
         type: 'right'
         text
@@ -54,10 +57,11 @@ Page = cC {
       # body
       (cE FullScroll, null,  # TODO maybe not need FullScroll
         (cE Text, {
+          selectable: true
           style: {
             fontSize: ss.TEXT_SIZE
             color: co.TEXT
-            # TODO selectable = true
+            fontFamily: 'monospace'
           } },
           @props.log_text
         )

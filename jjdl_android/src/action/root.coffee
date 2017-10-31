@@ -9,7 +9,9 @@ A_CLEAR_LOG = 'a_clear_log'
 A_LOG = 'a_log'
 
 A_SET_CACHE_PATH = 'a_set_cache_path'
+A_SET_IS_CLEANING = 'a_set_is_cleaning'
 A_SET_ABOUT_RIGHT = 'a_set_about_right'
+A_SET_LICENSE_TEXT = 'a_set_license_text'
 
 
 set_site = (site) ->
@@ -47,10 +49,22 @@ set_cache_path = (cache_path) ->
     payload: cache_path
   }
 
+set_is_cleaning = (cleaning) ->
+  {
+    type: A_SET_IS_CLEANING
+    payload: cleaning
+  }
+
 set_about_right = (right) ->
   {
     type: A_SET_ABOUT_RIGHT
     payload: right
+  }
+
+set_license_text = (text) ->
+  {
+    type: A_SET_LICENSE_TEXT
+    payload: text
   }
 
 module.exports = {
@@ -60,7 +74,9 @@ module.exports = {
   A_CLEAR_LOG
   A_LOG
   A_SET_CACHE_PATH
+  A_SET_IS_CLEANING
   A_SET_ABOUT_RIGHT
+  A_SET_LICENSE_TEXT
 
   set_site
   set_url
@@ -68,5 +84,7 @@ module.exports = {
   clear_log
   log
   set_cache_path
+  set_is_cleaning
   set_about_right
+  set_license_text
 }

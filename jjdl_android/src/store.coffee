@@ -14,6 +14,7 @@ PropTypes = require 'prop-types'
 
 reducer = require './reducer/root'
 action = require './action/root'
+op = require './action/op'
 
 Main = require './ui/main'
 
@@ -22,7 +23,15 @@ Main = require './ui/main'
 store = createStore reducer, applyMiddleware(thunk)
 
 O = cC {
-  # TODO
+
+  componentDidMount: ->
+    # init
+    store.dispatch op.load_license()
+    store.dispatch op.check_cache()
+    # TODO
+
+  componentWillUnmount: ->
+    # TODO
 
   render: ->
     (cE Provider, {

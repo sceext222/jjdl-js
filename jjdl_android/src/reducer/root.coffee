@@ -28,8 +28,12 @@ reducer = ($$state, action) ->
         $$.push action.payload
     when ac.A_SET_CACHE_PATH
       $$o = $$o.set 'cache_path', action.payload
+    when ac.A_SET_IS_CLEANING
+      $$o = $$o.set 'is_cleaning', action.payload
     when ac.A_SET_ABOUT_RIGHT
       $$o = $$o.set 'about_right', action.payload
+    when ac.A_SET_LICENSE_TEXT
+      $$o = $$o.set 'license_text', action.payload
   $$o
 
 module.exports = reducer

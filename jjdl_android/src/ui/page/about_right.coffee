@@ -22,6 +22,7 @@ Page = cC {
     navigation: PropTypes.object.isRequired
 
     about_right: PropTypes.string.isRequired
+    license_text: PropTypes.string
   }
 
   _on_back: ->
@@ -37,12 +38,19 @@ Page = cC {
     )
 
   _render_license: ->
-    # TODO
+    license_text = 'GNU GPLv3+'
+    if @props.license_text?
+      license_text = @props.license_text
+
     (cE Text, {
+      selectable: true
       style: {
+        fontSize: ss.TEXT_SIZE
         color: co.TEXT
+        flex: 1
+        fontFamily: 'monospace'
       } },
-      'TODO license'
+      license_text
     )
 
   _render_body: ->
@@ -56,7 +64,10 @@ Page = cC {
     if @props.about_right is 'tech'
       text = '技术'
 
-    (cE View, null,
+    (cE View, {
+      style: {
+        flex: 1
+      } },
       (cE Top, {
         type: 'left'
         text
@@ -80,6 +91,7 @@ action = require '../../action/root'
 mapStateToProps = ($$state, props) ->
   {
     about_right: $$state.get 'about_right'
+    license_text: $$state.get 'license_text'
   }
 
 mapDispatchToProps = (dispatch, props) ->
