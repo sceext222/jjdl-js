@@ -1,4 +1,4 @@
-# about_tech.coffee, jjdl_android/src/ui/page/
+# about_right.coffee, jjdl_android/src/ui/page/
 
 { createElement: cE } = require 'react'
 cC = require 'create-react-class'
@@ -9,19 +9,25 @@ PropTypes = require 'prop-types'
   Text
 } = require 'react-native'
 
-# TODO
+Top = require '../sub/top'
 
 
 Page = cC {
-  displayName: 'PageAboutTech'
+  displayName: 'PageAboutRight'
   propTypes: {
     # TODO
   }
 
   render: ->
     (cE View, null,
+      (cE Top, {
+        type: 'left'
+        text: 'TODO'
+        on_nav: () -> null
+        })
+      # TODO body
       (cE Text, null,
-        'page about tech'
+        'page about right'
       )
       # TODO
     )

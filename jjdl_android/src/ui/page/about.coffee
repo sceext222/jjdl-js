@@ -9,7 +9,7 @@ PropTypes = require 'prop-types'
   Text
 } = require 'react-native'
 
-# TODO
+Top = require '../sub/top'
 
 
 Page = cC {
@@ -20,6 +20,12 @@ Page = cC {
 
   render: ->
     (cE View, null,
+      (cE Top, {
+        type: 'right'
+        text: '关于'
+        on_nav: () -> null
+        })
+      # TODO body
       (cE Text, null,
         'page about'
       )

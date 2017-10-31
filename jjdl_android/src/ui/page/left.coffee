@@ -7,9 +7,14 @@ PropTypes = require 'prop-types'
 {
   View
   Text
+  Image
 } = require 'react-native'
+{
+  DrawerItems
+} = require 'react-navigation'
 
-# TODO
+co = require '../color'
+ss = require '../style'
 
 
 Page = cC {
@@ -19,11 +24,22 @@ Page = cC {
   }
 
   render: ->
-    (cE View, null,
-      (cE Text, null,
-        'page left'
-      )
-      # TODO
+    (cE View, {
+      style: {
+        flex: 1
+      } },
+      (cE DrawerItems, @props)
+      (cE View, {
+        style: {
+          flex: 1
+        } })
+      (cE Image, {
+        source: require '../../img/jjdl-logo-512.png'
+        resizeMode: 'contain'
+        style: {
+          width: ss.LEFT_WIDTH
+          height: ss.LEFT_WIDTH
+        } })
     )
 }
 

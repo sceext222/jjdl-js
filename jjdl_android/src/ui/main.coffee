@@ -6,102 +6,104 @@ PropTypes = require 'prop-types'
 
 {
   View
-  Image
 } = require 'react-native'
 {
   DrawerNavigator
-  DrawerItems
+  TabNavigator
 } = require 'react-navigation'
 { default: IconF } = require 'react-native-vector-icons/Feather'
+
+co = require './color'
+ss = require './style'
 
 PageStart = require './page/start'
 PageStartSite = require './page/start_site'
 PageLog = require './page/log'
 PageCache = require './page/cache'
 PageAbout = require './page/about'
-PageAboutTech = require './page/about_tech'
-PageAboutLicense = require './page/about_license'
+PageAboutRight = require './page/about_right'
 
-PageLeft = require './page/left'  # TODO
-
-
-_LEFT_ICON_SIZE = 20
-_LEFT_WIDTH = 150
+PageLeft = require './page/left'
 
 
-Main = DrawerNavigator {
+ScreenStart = TabNavigator {
   start: {
     screen: PageStart
     navigationOptions: {
+      tabBarVisible: false
+    }
+  }
+  site: {
+    screen: PageStartSite
+    navigationOptions: {
+      tabBarVisible: false
+    }
+  }
+}, {
+  swipeEnabled: false
+  lazy: false
+}
+
+ScreenAbout = TabNavigator {
+  about: {
+    screen: PageAbout
+    navigationOptions: {
+      tabBarVisible: false
+    }
+  }
+  right: {
+    screen: PageAboutRight
+    navigationOptions: {
+      tabBarVisible: false
+    }
+  }
+}, {
+  swipeEnabled: false
+  lazy: false
+}
+
+
+_left_icon = (icon, name) ->
+  ({ tintColor, focused}) ->
+    (cE icon, {
+      name
+      size: ss.LEFT_ICON_SIZE
+      style: {
+        color: tintColor
+      } })
+
+Main = DrawerNavigator {
+  start: {
+    screen: ScreenStart
+    navigationOptions: {
       drawerLabel: '开始'
-      drawerIcon: ({ tintColor, focused }) ->
-        (cE IconF, {
-          name: 'arrow-right'
-          size: _LEFT_ICON_SIZE
-          style: {
-            color: tintColor
-          } })
+      drawerIcon: _left_icon IconF, 'arrow-right'
     }
   }
   log: {
     screen: PageLog
     navigationOptions: {
       drawerLabel: '日志'
-      drawerIcon: ({ tintColor, focused }) ->
-        (cE IconF, {
-          name: 'activity'
-          size: _LEFT_ICON_SIZE
-          style: {
-            color: tintColor
-          } })
+      drawerIcon: _left_icon IconF, 'activity'
     }
   }
   cache: {
     screen: PageCache
     navigationOptions: {
       drawerLabel: '缓存'
-      drawerIcon: ({ tintColor, focused }) ->
-        (cE IconF, {
-          name: 'download'
-          size: _LEFT_ICON_SIZE
-          style: {
-            color: tintColor
-          } })
+      drawerIcon: _left_icon IconF, 'download'
     }
   }
   about: {
-    screen: PageAbout
+    screen: ScreenAbout
     navigationOptions: {
       drawerLabel: '关于'
-      drawerIcon: ({ tintColor, focused }) ->
-        (cE IconF, {
-          name: 'info'
-          size: _LEFT_ICON_SIZE
-          style: {
-            color: tintColor
-          } })
+      drawerIcon: _left_icon IconF, 'info'
     }
   }
 }, {
-  drawerWidth: _LEFT_WIDTH
-  contentComponent: (props) ->
-    (cE View, {
-      style: {
-        flex: 1
-      } },
-      (cE DrawerItems, props)
-      (cE View, {
-        style: {
-          flex: 1
-        } })
-      (cE Image, {
-        source: require '../img/jjdl-logo-512.png'
-        resizeMode: 'contain'
-        style: {
-          width: _LEFT_WIDTH
-          height: _LEFT_WIDTH
-        } })
-    )
+  drawerWidth: ss.LEFT_WIDTH
+  contentComponent: PageLeft
 }
 
 module.exports = Main
