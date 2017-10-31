@@ -25,8 +25,8 @@ ItemRight = require '../sub/item_right'
 _get_versions = ->
   o = []
   o.push config.P_VERSION
+  o.push config.P_REPO
   # TODO
-  o.push 'TODO'
 
   o.join '\n'
 
@@ -78,6 +78,7 @@ Page = cC {
           } })
         # versions
         (cE Text, {
+          selectable: true
           style: {
             fontSize: ss.TEXT_SIZE
             color: co.TEXT

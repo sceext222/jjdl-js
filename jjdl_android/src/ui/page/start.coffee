@@ -7,6 +7,7 @@ PropTypes = require 'prop-types'
 {
   View
   Text
+  TextInput
 } = require 'react-native'
 
 co = require '../color'
@@ -36,8 +37,8 @@ Page = cC {
   _on_show_log: ->
     @props.screenProps.navigation.navigate 'log'
 
-  _on_change_url: ->
-    # TODO
+  _on_change_url: (text) ->
+    @props.on_change_url text
 
   _on_start: ->
     @props.on_start()
@@ -77,7 +78,28 @@ Page = cC {
           @props.site
         )
       )
-      # TODO url
+      # FIXME text input BUG
+      # URL
+      (cE TextInput, {
+        value: @props.url
+        placeholder: 'URL'
+        placeholderTextColor: co.TEXT_SEC
+
+        autoCapitalize: 'none'
+        autoCorrect: false
+        autoGrow: true
+        underlineColorAndroid: 'transparent'
+
+        onChangeText: @_on_change_url
+
+        style: {
+          fontSize: ss.TEXT_SIZE
+          color: co.TEXT
+          fontFamily: 'monospace'
+
+          backgroundColor: co.BG_SEC
+          flexWrap: 'wrap'
+        } })
       (cE View, {
         style: {
           flex: 1  # placeholder

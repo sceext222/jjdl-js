@@ -12,6 +12,7 @@
 cC = require 'create-react-class'
 PropTypes = require 'prop-types'
 
+config = require './config'
 reducer = require './reducer/root'
 action = require './action/root'
 op = require './action/op'
@@ -21,6 +22,7 @@ Main = require './ui/main'
 
 # redux store
 store = createStore reducer, applyMiddleware(thunk)
+config.store = store  # save global store
 
 O = cC {
 
@@ -28,7 +30,6 @@ O = cC {
     # init
     store.dispatch op.load_license()
     store.dispatch op.check_cache()
-    # TODO
 
   componentWillUnmount: ->
     # TODO
@@ -42,7 +43,6 @@ O = cC {
 }
 
 init = ->
-  # TODO
   () =>
     O
 
