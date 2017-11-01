@@ -85,7 +85,7 @@ pack = (data) ->
 _make_main_name = (meta) ->
   title = meta.title.split('\n').join(' ').split(' ').join('-')
   author = meta.author.name.trim()
-  "#{title}@#{author}"
+  "#{title}@#{author}-#{meta.site}"
 
 _make_time_name = ->
   # TODO support GMT+0800 (CST)
