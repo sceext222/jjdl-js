@@ -6,9 +6,11 @@
   "license": "GPL-3.0+",
   "repository": "sceext222/jjdl-js",
   "scripts": {
-    "build": "coffee -o dist/ src/"
+    "build": "coffee -o dist/ src/",
+    "pack": "browserify -o dist/jjdl-all.js dist/jjdl.js --node"
   },
   "devDependencies": {
+    "browserify": "^14.5.0",
     "coffeescript": "^2.0.2"
   },
   "dependencies": {
@@ -16,10 +18,6 @@
     "jsdom": "^11.3.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5"
-  },
-  "optionalDependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "iconv-lite": "^0.4.19"
   },
   "engines": {
     "node": "8.x"
