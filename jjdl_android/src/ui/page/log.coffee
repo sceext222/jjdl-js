@@ -21,16 +21,12 @@ Button = require '../sub/button'
 Page = cC {
   displayName: 'PageLog'
   propTypes: {
-    navigation: PropTypes.object.isRequired
-
     log_text: PropTypes.string.isRequired
     is_doing: PropTypes.bool.isRequired
 
+    on_menu: PropTypes.func.isRequired
     on_stop: PropTypes.func.isRequired
   }
-
-  _on_menu: ->
-    @props.navigation.navigate 'DrawerOpen'
 
   _render_button: ->
     if @props.is_doing
@@ -52,7 +48,7 @@ Page = cC {
       (cE Top, {
         type: 'right'
         text
-        on_nav: @_on_menu
+        on_nav: @props.on_menu
         })
       # body
       (cE FullScroll, null,  # TODO maybe not need FullScroll
@@ -87,6 +83,8 @@ mapStateToProps = ($$state, props) ->
 
 mapDispatchToProps = (dispatch, props) ->
   o = Object.assign {}, props
+  o.on_menu = ->
+    props.navigation.navigate 'DrawerOpen'
   o.on_stop = ->
     # TODO
   o

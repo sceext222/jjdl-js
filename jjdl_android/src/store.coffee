@@ -28,7 +28,7 @@ O = cC {
 
   componentDidMount: ->
     # init
-    store.dispatch op.load_license()
+    store.dispatch op.load_assets()
     store.dispatch op.check_cache()
 
   componentWillUnmount: ->

@@ -12,8 +12,6 @@ PropTypes = require 'prop-types'
   Image
 } = require 'react-native'
 
-config = require '../../config'
-
 co = require '../color'
 ss = require '../style'
 
@@ -22,38 +20,15 @@ FullScroll = require '../sub/full_scroll'
 ItemRight = require '../sub/item_right'
 
 
-_get_versions = ->
-  o = []
-  o.push config.P_VERSION
-  o.push config.P_REPO
-  # TODO
-
-  o.join '\n'
-
-
 Page = cC {
   displayName: 'PageAbout'
   propTypes: {
-    screenProps: PropTypes.object.isRequired
-    navigation: PropTypes.object.isRequired
+    version_text: PropTypes.string.isRequired
 
+    on_menu: PropTypes.func.isRequired
     on_show_tech: PropTypes.func.isRequired
     on_show_license: PropTypes.func.isRequired
   }
-
-  _on_menu: ->
-    @props.screenProps.navigation.navigate 'DrawerOpen'
-
-  _on_show_right: ->
-    @props.navigation.navigate 'right'
-
-  _on_show_tech: ->
-    @props.on_show_tech()
-    @_on_show_right()
-
-  _on_show_license: ->
-    @props.on_show_license()
-    @_on_show_right()
 
   render: ->
     (cE View, {
@@ -64,7 +39,7 @@ Page = cC {
       (cE Top, {
         type: 'right'
         text: '关于'
-        on_nav: @_on_menu
+        on_nav: @props.on_menu
         })
       # body
       (cE FullScroll, null,
@@ -88,15 +63,15 @@ Page = cC {
             flex: 1
             flexShrink: 0
           } },
-          _get_versions()
+          @props.version_text
         )
         # tech and LICENSE buttons
         (cE ItemRight, {
           text: '技术'
-          on_press: @_on_show_tech
+          on_press: @props.on_show_tech
           })
         (cE ItemRight, {
-          on_press: @_on_show_license
+          on_press: @props.on_show_license
           },
           (cE Text, {
             style: {
@@ -123,7 +98,17 @@ Page = cC {
 { connect } = require 'react-redux'
 Immutable = require 'immutable'
 
+config = require '../../config'
 action = require '../../action/root'
+
+
+_get_versions = ->
+  o = []
+  o.push config.P_VERSION
+  o.push config.P_REPO
+  # TODO
+
+  o.join '\n'
 
 
 mapStateToProps = ($$state, props) ->
@@ -131,10 +116,19 @@ mapStateToProps = ($$state, props) ->
 
 mapDispatchToProps = (dispatch, props) ->
   o = Object.assign {}, props
+  o.version_text = _get_versions()
+
+  _show_right = ->
+    props.navigation.navigate 'right'
+
+  o.on_menu = ->
+    props.screenProps.navigation.navigate 'DrawerOpen'
   o.on_show_tech = ->
     dispatch action.set_about_right('tech')
+    _show_right()
   o.on_show_license = ->
     dispatch action.set_about_right('license')
+    _show_right()
   o
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(Page)

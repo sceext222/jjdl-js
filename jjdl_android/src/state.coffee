@@ -12,7 +12,13 @@ init_state = {  # with Immutable
 
   # about right page, which to show
   about_right: 'tech'  # 'tech', 'license'
-  license_text: null
+
+  # loaded flags
+  loaded: {
+    license: false  # assets/LICENSE
+    pm_bridge: false  # assets/pm_bridge.html
+    jjdl_core: false  # assets/jjdl_core.js
+  }
 }
 
 module.exports = init_state

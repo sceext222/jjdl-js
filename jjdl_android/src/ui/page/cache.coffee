@@ -19,33 +19,21 @@ Button = require '../sub/button'
 Page = cC {
   displayName: 'PageCache'
   propTypes: {
-    navigation: PropTypes.object.isRequired
+    show_button: PropTypes.bool.isRequired
+    cache_path: PropTypes.string.isRequired
 
-    cache_path: PropTypes.string
-    is_cleaning: PropTypes.bool.isRequired
-    is_doing: PropTypes.bool.isRequired
-
+    on_menu: PropTypes.func.isRequired
     on_clear_cache: PropTypes.func.isRequired
   }
 
-  _on_menu: ->
-    @props.navigation.navigate 'DrawerOpen'
-
   _render_button: ->
-    # not show clean button if cleaning or doing
-    if @props.cache_path? and (! @props.is_cleaning) and (! @props.is_doing)
+    if @props.show_button
       (cE Button, {
         text: '清除'
         on_press: @props.on_clear_cache
         })
 
   render: ->
-    cache_path = '没有内容'
-    if @props.cache_path?
-      cache_path = @props.cache_path
-    if @props.is_cleaning
-      cache_path = '正在清除 .. . '
-
     (cE View, {
       style: {
         flex: 1
@@ -53,7 +41,7 @@ Page = cC {
       (cE Top, {
         type: 'right'
         text: '缓存'
-        on_nav: @_on_menu
+        on_nav: @props.on_menu
         })
       # cache path
       (cE View, {
@@ -68,7 +56,7 @@ Page = cC {
             fontSize: ss.TEXT_SIZE
             color: co.TEXT_SEC
           } },
-          cache_path
+          @props.cache_path
         )
       )
       # clear cache button
@@ -86,14 +74,28 @@ op = require '../../action/op'
 
 
 mapStateToProps = ($$state, props) ->
+  cache_path = $$state.get 'cache_path'
+  is_cleaning = $$state.get 'is_cleaning'
+  is_doing = $$state.get 'is_doing'
+
+  show_button = false
+  if cache_path? and (! is_cleaning) and (! is_doing)
+    show_button = true
+
+  if ! cache_path?
+    cache_path = '没有内容'
+  if is_cleaning
+    cache_path = '正在清除 .. . '
+
   {
-    cache_path: $$state.get 'cache_path'
-    is_cleaning: $$state.get 'is_cleaning'
-    is_doing: $$state.get 'is_doing'
+    show_button
+    cache_path
   }
 
 mapDispatchToProps = (dispatch, props) ->
   o = Object.assign {}, props
+  o.on_menu = ->
+    props.navigation.navigate 'DrawerOpen'
   o.on_clear_cache = ->
     dispatch op.clear_cache()
   o

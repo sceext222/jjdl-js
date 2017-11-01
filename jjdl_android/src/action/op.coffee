@@ -14,10 +14,17 @@ check_cache = ->
     else
       dispatch action.set_cache_path(null)
 
-load_license = ->
+load_assets = ->
   (dispatch, getState) ->
-    text = await RNFS.readFileAssets(config.LICENSE_FILE)
-    dispatch action.set_license_text(text)
+    # load LICENSE
+    config.license_text = await RNFS.readFileAssets config.LICENSE_FILE
+    dispatch action.set_loaded('license', true)
+    # pm_bridge.html
+    config.pm_bridge_html = await RNFS.readFileAssets config.PM_BRIDGE_HTML
+    dispatch action.set_loaded('pm_bridge', true)
+    # jjdl_core.js
+    config.jjdl_core_js = await RNFS.readFileAssets config.JJDL_CORE_JS
+    dispatch action.set_loaded('jjdl_core', true)
 
 clear_cache = ->
   (dispatch, getState) ->
@@ -33,6 +40,6 @@ clear_cache = ->
 
 module.exports = {
   check_cache  # thunk
-  load_license  # thunk
+  load_assets  # thunk
   clear_cache  # thunk
 }
