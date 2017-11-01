@@ -5,15 +5,19 @@ path = require 'path'
 config = require './config'
 util = require './util'
 al = require './al'
-site = require './site'
+# FIXME
+#site = require './site'
 
 pm_bridge = require './_al/android/pm_bridge'
 
 
 main = (site_name, uri) ->  # async
   # DEBUG
-  log.d config.P_VERSION
-  log.d "site = [#{site_name}], url = #{uri}"
+  al.logd config.P_VERSION
+  al.logd "site = [#{site_name}], url = #{uri}"
+
+  # FIXME
+  site = require './site'
 
   core = site.create site_name, uri
 
@@ -42,4 +46,6 @@ _init = ->
   pm_bridge.send {
     type: 'start'
   }
+  # FIXME
+  al.logd "FIXME: init done"
 _init()
