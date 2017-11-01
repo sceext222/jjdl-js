@@ -7,18 +7,17 @@
   "repository": "sceext222/jjdl-js",
   "scripts": {
     "build": "coffee -o dist/ src/",
-    "pack": "browserify -o dist/jjdl-all.js dist/jjdl.js --node"
+    "pack": "browserify -o dist/jjdl_core.js dist/jjdl.js"
   },
   "devDependencies": {
+    "browserify": "^14.5.0",
     "coffeescript": "^2.0.2",
-    "react-native-cli": "^2.0.1",
-    "browserify": "^14.5.0"
+    "react-native-cli": "^2.0.1"
   },
   "dependencies": {
+    "browser-request": "^0.3.3",
     "jquery": "^3.2.1",
-    "jsdom": "^11.3.0",
-    "request": "^2.83.0",
-    "request-promise-native": "^1.0.5"
+    "jsdom": "^11.3.0"
   },
   "engines": {
     "node": "8.x"
