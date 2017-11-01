@@ -7,6 +7,9 @@
 # }
 #
 
+path = require 'path-browserify'
+RNFS = require 'react-native-fs'
+
 config = require './config'
 action = require './action/root'
 op = require './action/op'
@@ -15,29 +18,69 @@ op = require './action/op'
 _log = (text) ->
   config.store.dispatch action.log(text)
 
+_send = (that, msg) ->
+  that.postMessage JSON.stringify(msg)
+
+
+_WRITE_REPLACE_SUFFIX = '.tmp'
+
+_check_cache = (that, _id, filename) ->
+  filename = path.join config.SDCARD_JJDL_ROOT, filename
+  try
+    if ! await RNFS.exists(filename)
+      _send that, {
+        _id
+        type: 'callback'
+        payload: null
+      }
+      return
+    # read file as base64 (blob)
+    data = await RNFS.readFile filename, 'base64'
+    _send that, {
+      _id
+      type: 'callback'
+      payload: data
+    }
+  catch e
+    _send that, {
+      _id
+      type: 'callback'
+      error: true
+      payload: "ERROR: #{e}  #{e.stack}"
+    }
+
+_save_file = (filename, data) ->
+  filename = path.join config.SDCARD_JJDL_ROOT, filename
+  try
+    tmp = filename + _WRITE_REPLACE_SUFFIX
+    await RNFS.writeFile tmp, data, 'base64'  # write
+    await RNFS.moveFile tmp, filename  # replace
+  catch e
+    # no need to callback
+    _log "ERROR: save file `#{filename}`: #{e}  #{e.stack}"
+
 
 _on_message = (raw, that) ->
   data = JSON.parse raw
   switch data.type
     when 'log'
       _log data.payload
-    when 'dl_page'
-      # TODO
+    when 'dl_page'  # TODO
       null
-    when 'check_cache'
-      # TODO
-      null
-    when 'start'
+    when 'check_cache'  # with callback
+      _check_cache that, data.payload._id, data.payload
+    when 'save_file'
+      _save_file data.payload.filename, data.payload.data
+    when 'start'  # with send back
       $$state = config.store.getState()
       # send start args
-      to = {
+      _send that, {
         type: 'args'
         payload: {
           site: $$state.get 'site'
           url: $$state.get 'url'
         }
       }
-      that.postMessage JSON.stringify(to)
     when 'init'
       _log "DEBUG: WebView UA: #{data.payload.ua}"
       # inject jjdl_core.js
