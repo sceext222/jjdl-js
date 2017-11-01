@@ -52,9 +52,13 @@ _check_cache = (that, _id, filename) ->
 _save_file = (filename, data) ->
   filename = path.join config.SDCARD_JJDL_ROOT, filename
   try
+    # check parent dir
+    parent = path.dirname filename
+    await RNFS.mkdir parent
+    # write-replace
     tmp = filename + _WRITE_REPLACE_SUFFIX
-    await RNFS.writeFile tmp, data, 'base64'  # write
-    await RNFS.moveFile tmp, filename  # replace
+    await RNFS.writeFile tmp, data, 'base64'
+    await RNFS.moveFile tmp, filename
   catch e
     # no need to callback
     _log "ERROR: save file `#{filename}`: #{e}  #{e.stack}"
