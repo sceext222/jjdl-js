@@ -18,6 +18,7 @@ action = require './action/root'
 op = require './action/op'
 
 Main = require './ui/main'
+MainWebview = require './ui/webview'
 
 
 # redux store
@@ -38,7 +39,9 @@ O = cC {
     (cE Provider, {
       store
       },
-      (cE Main)
+      (cE MainWebview, null,
+        (cE Main)
+      )
     )
 }
 

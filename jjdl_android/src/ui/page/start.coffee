@@ -8,6 +8,7 @@ PropTypes = require 'prop-types'
   View
   Text
   TextInput
+  ProgressBarAndroid: ProgressBar
 } = require 'react-native'
 
 co = require '../color'
@@ -23,6 +24,7 @@ Page = cC {
     site: PropTypes.string.isRequired
     url: PropTypes.string.isRequired
     show_button: PropTypes.bool.isRequired
+    is_loading: PropTypes.bool.isRequired
 
     on_change_url: PropTypes.func.isRequired
     on_show_site: PropTypes.func.isRequired
@@ -35,6 +37,48 @@ Page = cC {
         text: '开始'
         on_press: @props.on_start
         })
+
+  _render_body: ->
+    if @props.is_loading
+      (cE View, {
+        style: {
+          # TODO
+        } },
+        (cE ProgressBar, {
+          # FIXME react-native BUG here
+          styleAttr: 'Horizontal'
+          })
+        (cE Text, {
+          style: {
+            textAlign: 'center'
+            fontSize: ss.TEXT_SIZE
+            color: co.TEXT_SEC
+          } },
+          '正在加载 .. . '
+        )
+      )
+    else
+      # FIXME text input BUG
+      (cE TextInput, {
+        value: @props.url
+        placeholder: 'URL'
+        placeholderTextColor: co.TEXT_SEC
+
+        autoCapitalize: 'none'
+        autoCorrect: false
+        autoGrow: true
+        underlineColorAndroid: 'transparent'
+
+        onChangeText: @props.on_change_url
+
+        style: {
+          fontSize: ss.TEXT_SIZE
+          color: co.TEXT
+          fontFamily: 'monospace'
+
+          backgroundColor: co.BG_SEC
+          flexWrap: 'wrap'
+        } })
 
   render: ->
     (cE View, {
@@ -63,31 +107,12 @@ Page = cC {
           @props.site
         )
       )
-      # FIXME text input BUG
       # URL
-      (cE TextInput, {
-        value: @props.url
-        placeholder: 'URL'
-        placeholderTextColor: co.TEXT_SEC
-
-        autoCapitalize: 'none'
-        autoCorrect: false
-        autoGrow: true
-        underlineColorAndroid: 'transparent'
-
-        onChangeText: @props.on_change_url
-
-        style: {
-          fontSize: ss.TEXT_SIZE
-          color: co.TEXT
-          fontFamily: 'monospace'
-
-          backgroundColor: co.BG_SEC
-          flexWrap: 'wrap'
-        } })
+      @_render_body()
+      # placeholder
       (cE View, {
         style: {
-          flex: 1  # placeholder
+          flex: 1
         } })
       # start button
       @_render_button()
@@ -100,24 +125,32 @@ Page = cC {
 Immutable = require 'immutable'
 
 action = require '../../action/root'
+op = require '../../action/op'
 
 
 mapStateToProps = ($$state, props) ->
   is_doing = $$state.get 'is_doing'
+  is_loading = false
 
   show_button = false
   if ! is_doing
     show_button = true
+  url = $$state.get 'url'
+  if url.trim() is ''
+    show_button = false
   # check loaded
   if ! $$state.getIn ['loaded', 'pm_bridge']
     show_button = false
+    is_loading = true
   if ! $$state.getIn ['loaded', 'jjdl_core']
     show_button = false
+    is_loading = true
 
   {
     site: $$state.get 'site'
-    url: $$state.get 'url'
+    url
     show_button
+    is_loading
   }
 
 mapDispatchToProps = (dispatch, props) ->
@@ -131,7 +164,7 @@ mapDispatchToProps = (dispatch, props) ->
   o.on_show_site = ->
     props.navigation.navigate 'site'
   o.on_start = ->
-    # TODO
+    dispatch op.start_jjdl()
     _show_log()
   o
 

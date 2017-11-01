@@ -37,9 +37,19 @@ clear_cache = ->
     # check again after clean
     dispatch check_cache()
 
+start_jjdl = ->
+  (dispatch, getState) ->
+    # check url empty
+    url = getState().get 'url'
+    if url.trim() is ''
+      return  # just ignore
+
+    dispatch action.set_is_doing(true)
 
 module.exports = {
   check_cache  # thunk
   load_assets  # thunk
   clear_cache  # thunk
+
+  start_jjdl  # thunk
 }

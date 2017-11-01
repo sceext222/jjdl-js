@@ -73,6 +73,7 @@ Page = cC {
 Immutable = require 'immutable'
 
 action = require '../../action/root'
+op = require '../../action/op'
 
 
 mapStateToProps = ($$state, props) ->
@@ -86,7 +87,9 @@ mapDispatchToProps = (dispatch, props) ->
   o.on_menu = ->
     props.navigation.navigate 'DrawerOpen'
   o.on_stop = ->
-    # TODO
+    # just change is_doing to false
+    dispatch action.set_is_doing(false)
+    dispatch op.check_cache()
   o
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(Page)
