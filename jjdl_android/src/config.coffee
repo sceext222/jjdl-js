@@ -18,6 +18,10 @@ CACHE_PATH = '/sdcard/jjdl/cache'
 LICENSE_FILE = 'LICENSE'
 PM_BRIDGE_HTML = 'pm_bridge.html'
 JJDL_CORE_JS = 'jjdl_core.js'
+LIB_JS = 'lib.js'
+
+# LIB_JS html insert position
+LIB_JS_INSERT = '// LIB_JS INSERT POSITION //'
 
 
 module.exports = {
@@ -32,6 +36,9 @@ module.exports = {
   LICENSE_FILE
   PM_BRIDGE_HTML
   JJDL_CORE_JS
+  LIB_JS
+
+  LIB_JS_INSERT
 
   # runtime vars
   store: null  # redux store
@@ -40,4 +47,5 @@ module.exports = {
   license_text: null
   pm_bridge_html: null
   jjdl_core_js: null
+  lib_js: null
 }

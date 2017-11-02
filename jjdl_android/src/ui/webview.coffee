@@ -11,6 +11,10 @@ PropTypes = require 'prop-types'
 
 config = require '../config'
 
+_make_html = ->
+  raw = config.pm_bridge_html.split config.LIB_JS_INSERT
+  o = raw[0] + config.lib_js + raw[1]
+
 
 Page = cC {
   displayName: 'PageWebview'
@@ -34,7 +38,7 @@ Page = cC {
     if @props.show_webview
       (cE WebView, {
         source: {
-          html: config.pm_bridge_html
+          html: _make_html()
         }
         onError: @props.on_error
         onMessage: @_on_message
