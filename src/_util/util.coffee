@@ -1,4 +1,5 @@
 # util.coffee, jjdl-js/src/_util/
+# NOTE: not forget to patch jquery (init code) to work in WebView (on android)
 
 { JSDOM } = require 'jsdom'
 jquery = require 'jquery'

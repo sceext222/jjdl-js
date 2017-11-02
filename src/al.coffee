@@ -4,15 +4,15 @@ config = require './config'
 
 {
   dl_page
-} = require './_al/node/net'
+} = require './_al/android/net'
 {
   log_line
-} = require './_al/node/log'
+} = require './_al/android/log'
 {
   file_exist
   read_file
   save_file
-} = require './_al/node/file'
+} = require './_al/android/file'
 
 
 # raw log

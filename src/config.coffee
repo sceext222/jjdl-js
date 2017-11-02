@@ -1,6 +1,6 @@
 # config.coffee, jjdl-js/src/
 
-P_VERSION = 'jjdl-js version 0.2.0-1 test20171101 1644'
+P_VERSION = 'jjdl-js version 0.2.0-1 test20171102 1726'
 
 
 LOG_PREFIX = 'jjdl-js'

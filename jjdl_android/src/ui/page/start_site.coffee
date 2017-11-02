@@ -16,20 +16,12 @@ ItemRight = require '../sub/item_right'
 Page = cC {
   displayName: 'PageStartSite'
   propTypes: {
-    navigation: PropTypes.object.isRequired
-
     site: PropTypes.string.isRequired
     site_list: PropTypes.array.isRequired
 
+    on_back: PropTypes.func.isRequired
     on_change_site: PropTypes.func.isRequired
   }
-
-  _on_back: ->
-    @props.navigation.goBack()
-
-  _on_change_site: (site) ->
-    @props.on_change_site site
-    @_on_back()
 
   _render_one_site: (site, is_check) ->
     (cE ItemRight, {
@@ -39,7 +31,7 @@ Page = cC {
       text: site
       is_check
       on_press: =>
-        @_on_change_site site
+        @props.on_change_site site
       })
 
   _render_site_list: ->
@@ -60,7 +52,7 @@ Page = cC {
       (cE Top, {
         type: 'left'
         text: 'Site'
-        on_nav: @_on_back
+        on_nav: @props.on_back
         })
       # body
       (cE FullScroll, null,
@@ -86,8 +78,11 @@ mapStateToProps = ($$state, props) ->
 
 mapDispatchToProps = (dispatch, props) ->
   o = Object.assign {}, props
+  o.on_back = ->
+    props.navigation.goBack()
   o.on_change_site = (site) ->
     dispatch action.set_site(site)
+    props.navigation.goBack()
   o
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(Page)

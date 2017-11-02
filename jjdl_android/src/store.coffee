@@ -18,6 +18,7 @@ action = require './action/root'
 op = require './action/op'
 
 Main = require './ui/main'
+MainWebview = require './ui/webview'
 
 
 # redux store
@@ -28,7 +29,7 @@ O = cC {
 
   componentDidMount: ->
     # init
-    store.dispatch op.load_license()
+    store.dispatch op.load_assets()
     store.dispatch op.check_cache()
 
   componentWillUnmount: ->
@@ -38,7 +39,9 @@ O = cC {
     (cE Provider, {
       store
       },
-      (cE Main)
+      (cE MainWebview, null,
+        (cE Main)
+      )
     )
 }
 

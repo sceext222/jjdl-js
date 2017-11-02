@@ -32,8 +32,8 @@ reducer = ($$state, action) ->
       $$o = $$o.set 'is_cleaning', action.payload
     when ac.A_SET_ABOUT_RIGHT
       $$o = $$o.set 'about_right', action.payload
-    when ac.A_SET_LICENSE_TEXT
-      $$o = $$o.set 'license_text', action.payload
+    when ac.A_SET_LOADED
+      $$o = $$o.setIn ['loaded', action.payload.type], action.payload.loaded
   $$o
 
 module.exports = reducer

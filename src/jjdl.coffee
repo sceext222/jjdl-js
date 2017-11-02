@@ -1,10 +1,5 @@
 # jjdl.coffee, jjdl-js/src/
-# main bin entry of jjdl-js
-#
-#   $ node jjdl.js SITE URL
-# eg:
-#   $ node jjdl.js jjwxc "http://www.jjwxc.net/XXX.html"
-#
+# main entry of jjdl-js (jjdl_core for jjdl_android)
 path = require 'path'
 
 config = require './config'
@@ -12,8 +7,14 @@ util = require './util'
 al = require './al'
 site = require './site'
 
+pm_bridge = require './_al/android/pm_bridge'
+
 
 main = (site_name, uri) ->  # async
+  # DEBUG
+  al.logd config.P_VERSION
+  al.logd "site = [#{site_name}], url = #{uri}"
+
   core = site.create site_name, uri
 
   data = await core.main()
@@ -25,37 +26,20 @@ main = (site_name, uri) ->  # async
   # save result text file
   await al.save_file path.join(config.OUTPUT_DIR, util.pack_filename(data.meta)), text
 
-
-_help = ->
-  '''
-  Usage for jjdl-js:
-      node jjdl.js SITE URL
-
-      --help
-      --version
-  '''
-
-_version = ->
-  config.P_VERSION
-
-p_args = (args) ->  # async
-  if args.length < 1
-    console.log "ERROR: bad command line, please try `--help`"
-    process.exit 1
-
-  switch args[0]
-    when '--help'
-      console.log _help()
-      return
-    when '--version'
-      console.log _version()
-      return
-
-  await main args[0], args[1]
-
-_start = ->
+_main = (args) ->
   try
-    await p_args process.argv[2..]
+    await main(args.site, args.url)
   catch e
-    console.log "unknow ERROR: #{e}  #{e.stack}"
-_start()
+    al.loge "unknow ERROR: #{e}  #{e.stack}"
+  # always send end msg
+  pm_bridge.send {
+    type: 'end'
+  }
+
+_init = ->
+  pm_bridge.set_main _main
+  # init message
+  pm_bridge.send {
+    type: 'start'
+  }
+_init()

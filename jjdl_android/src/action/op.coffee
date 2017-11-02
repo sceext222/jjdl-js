@@ -14,10 +14,11 @@ check_cache = ->
     else
       dispatch action.set_cache_path(null)
 
-load_license = ->
+load_assets = ->
   (dispatch, getState) ->
-    text = await RNFS.readFileAssets(config.LICENSE_FILE)
-    dispatch action.set_license_text(text)
+    # load LICENSE
+    config.license_text = await RNFS.readFileAssets config.LICENSE_FILE
+    dispatch action.set_loaded('license', true)
 
 clear_cache = ->
   (dispatch, getState) ->
@@ -30,9 +31,19 @@ clear_cache = ->
     # check again after clean
     dispatch check_cache()
 
+start_jjdl = ->
+  (dispatch, getState) ->
+    # check url empty
+    url = getState().get 'url'
+    if url.trim() is ''
+      return  # just ignore
+
+    dispatch action.set_is_doing(true)
 
 module.exports = {
   check_cache  # thunk
-  load_license  # thunk
+  load_assets  # thunk
   clear_cache  # thunk
+
+  start_jjdl  # thunk
 }

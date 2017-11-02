@@ -12,7 +12,11 @@ init_state = {  # with Immutable
 
   # about right page, which to show
   about_right: 'tech'  # 'tech', 'license'
-  license_text: null
+
+  # loaded flags
+  loaded: {
+    license: false  # assets/LICENSE
+  }
 }
 
 module.exports = init_state

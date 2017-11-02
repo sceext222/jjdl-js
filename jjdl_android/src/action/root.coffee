@@ -11,7 +11,7 @@ A_LOG = 'a_log'
 A_SET_CACHE_PATH = 'a_set_cache_path'
 A_SET_IS_CLEANING = 'a_set_is_cleaning'
 A_SET_ABOUT_RIGHT = 'a_set_about_right'
-A_SET_LICENSE_TEXT = 'a_set_license_text'
+A_SET_LOADED = 'a_set_loaded'
 
 
 set_site = (site) ->
@@ -61,10 +61,13 @@ set_about_right = (right) ->
     payload: right
   }
 
-set_license_text = (text) ->
+set_loaded = (type, loaded) ->
   {
-    type: A_SET_LICENSE_TEXT
-    payload: text
+    type: A_SET_LOADED
+    payload: {
+      type
+      loaded
+    }
   }
 
 module.exports = {
@@ -76,7 +79,7 @@ module.exports = {
   A_SET_CACHE_PATH
   A_SET_IS_CLEANING
   A_SET_ABOUT_RIGHT
-  A_SET_LICENSE_TEXT
+  A_SET_LOADED
 
   set_site
   set_url
@@ -86,5 +89,5 @@ module.exports = {
   set_cache_path
   set_is_cleaning
   set_about_right
-  set_license_text
+  set_loaded
 }
