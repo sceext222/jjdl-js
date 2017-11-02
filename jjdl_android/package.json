@@ -7,12 +7,14 @@
     "build": "coffee -o dist/ src/"
   },
   "dependencies": {
+    "buffer": "^5.0.8",
     "create-react-class": "^15.6.2",
     "immutable": "^3.8.2",
     "path-browserify": "^0.0.0",
     "prop-types": "^15.6.0",
     "react": "16.0.0-beta.5",
     "react-native": "0.49.5",
+    "react-native-fetch-blob": "^0.10.8",
     "react-native-fs": "^2.8.1",
     "react-native-vector-icons": "^4.4.2",
     "react-navigation": "1.0.0-beta.15",

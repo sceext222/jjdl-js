@@ -1,19 +1,18 @@
 # net.coffee, jjdl-js/src/_al/android/
 
-request = require 'browser-request'
+pm_bridge = require './pm_bridge'
 
 
 dl_page = (uri, encoding = null, gzip = true) ->
-  new Promise (resolve, reject) ->
-    request {
+  result = await pm_bridge.with_callback {
+    type: 'dl_page'
+    payload: {
       uri
       encoding
       gzip
-    }, (err, res, body) ->
-      if err
-        reject err
-      else
-        resolve body
+    }
+  }
+  Buffer.from result, 'base64'
 
 
 module.exports = {

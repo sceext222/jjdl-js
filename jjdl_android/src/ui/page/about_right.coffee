@@ -31,7 +31,7 @@ Page = cC {
       style: {
         color: co.TEXT
       } },
-      'TODO tech'
+      'TODO'
     )
 
   _render_body: ->

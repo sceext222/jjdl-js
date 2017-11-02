@@ -13,6 +13,7 @@ RNFS = require 'react-native-fs'
 config = require './config'
 action = require './action/root'
 op = require './action/op'
+util = require './util'
 
 
 _log = (text) ->
@@ -63,16 +64,32 @@ _save_file = (filename, data) ->
     # no need to callback
     _log "ERROR: save file `#{filename}`: #{e}  #{e.stack}"
 
+_dl_page = (that, _id, args) ->
+  try
+    result = await util.dl_page args.uri  # TODO args
+    _send that, {
+      _id
+      type: 'callback'
+      payload: result.toString 'base64'  # Buffer.toString()
+    }
+  catch e
+    _send that, {
+      _id
+      type: 'callback'
+      error: true
+      payload: "ERROR: #{e}  #{e.stack}"
+    }
+
 
 _on_message = (raw, that) ->
   data = JSON.parse raw
   switch data.type
     when 'log'
       _log data.payload
-    when 'dl_page'  # TODO
-      null
+    when 'dl_page'  # with callback
+      _dl_page that, data._id, data.payload
     when 'check_cache'  # with callback
-      _check_cache that, data.payload._id, data.payload
+      _check_cache that, data._id, data.payload
     when 'save_file'
       _save_file data.payload.filename, data.payload.data
     when 'start'  # with send back
