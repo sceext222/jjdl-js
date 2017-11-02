@@ -24,4 +24,4 @@ android/gradle
 android/gradlew
 /dist
 
-android/app/src/main/assets/jjdl_core.js
+android/app/src/main/assets/*.js

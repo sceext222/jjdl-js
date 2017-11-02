@@ -8,8 +8,8 @@
   "scripts": {
     "build": "coffee -o dist/ src/",
     "lib": "browserify -o dist/lib.js -r path -r url -r jquery -r jsdom -r browser-request",
-    "pack": "browserify -o dist/jjdl-all.js -x path -x url -x jquery -x jsdom -x browser-request dist/jjdl.js",
-    "min": "uglifyjs dist/jjdl-all.js -c -o dist/jjdl_core.js"
+    "pack": "browserify -o dist/jjdl_core.js -x path -x url -x jquery -x jsdom -x browser-request dist/jjdl.js",
+    "min": "uglifyjs dist/lib.js -c -m -o dist/lib.min.js"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
