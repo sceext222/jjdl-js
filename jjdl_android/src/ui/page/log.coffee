@@ -7,13 +7,13 @@ PropTypes = require 'prop-types'
 {
   View
   Text
+  ScrollView
 } = require 'react-native'
 
 co = require '../color'
 ss = require '../style'
 
 Top = require '../sub/top'
-FullScroll = require '../sub/full_scroll'
 Button = require '../sub/button'
 
 
@@ -36,6 +36,12 @@ Page = cC {
         on_press: @props.on_stop
         })
 
+  _on_auto_scroll: ->
+    # TODO improve scroll logic
+    _do_scroll = =>
+      @_scroll.scrollToEnd()
+    setTimeout _do_scroll, 1e2  # with a small latency
+
   render: ->
     text = '日志'
     if @props.is_doing
@@ -51,15 +57,41 @@ Page = cC {
         on_nav: @props.on_menu
         })
       # body
-      (cE FullScroll, null,  # TODO maybe not need FullScroll
-        (cE Text, {
-          selectable: true
+      (cE View, {
+        style: {
+          flex: 1
+        } },
+        (cE ScrollView, {
+          onContentSizeChange: @_on_auto_scroll
+          ref: (it) =>
+            @_scroll = it
           style: {
-            fontSize: ss.TEXT_SIZE
-            color: co.TEXT
-            fontFamily: 'monospace'
+            flex: 1
+          }
+          contentContainerStyle: {
+            flexGrow: 1
           } },
-          @props.log_text
+          (cE View, {
+            style: {
+              flex: 1
+            } },
+            # horizontal scroll
+            (cE ScrollView, {
+              horizontal: true
+              style: {
+                flex: 1
+              } },
+              (cE Text, {
+                selectable: true
+                style: {
+                  fontSize: ss.LOG_TEXT_SIZE
+                  color: co.TEXT
+                  fontFamily: 'monospace'
+                } },
+                @props.log_text
+              )
+            )
+          )
         )
       )
       # stop button

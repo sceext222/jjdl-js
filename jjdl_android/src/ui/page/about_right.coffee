@@ -7,6 +7,7 @@ PropTypes = require 'prop-types'
 {
   View
   Text
+  ScrollView
 } = require 'react-native'
 
 co = require '../color'
@@ -38,15 +39,22 @@ Page = cC {
     if @props.about_right is 'tech'
       @_render_tech()
     else  # LICENSE
-      (cE Text, {
-        selectable: true
+      # horizontal scroll
+      (cE ScrollView, {
+        horizontal: true
         style: {
-          fontSize: ss.TEXT_SIZE
-          color: co.TEXT
           flex: 1
-          fontFamily: 'monospace'
         } },
-        @props.license_text
+        (cE Text, {
+          selectable: true
+          style: {
+            fontSize: ss.LOG_TEXT_SIZE
+            color: co.TEXT
+            flex: 1
+            fontFamily: 'monospace'
+          } },
+          @props.license_text
+        )
       )
 
   render: ->

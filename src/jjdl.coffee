@@ -24,7 +24,10 @@ main = (site_name, uri) ->  # async
 
   text = core.pack(data)
   # save result text file
-  await al.save_file path.join(config.OUTPUT_DIR, util.pack_filename(data.meta)), text
+  result_file = path.join(config.OUTPUT_DIR, util.pack_filename(data.meta))
+  await al.save_file result_file, text
+  # DEBUG
+  al.logd "output /sdcard/jjdl/#{result_file}"
 
 _main = (args) ->
   try

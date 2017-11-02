@@ -13,6 +13,8 @@ TOP_PADDING = 10
 TEXT_SIZE = 15
 TITLE_SIZE = 20
 
+LOG_TEXT_SIZE = 10
+
 # stylesheet TODO
 
 
@@ -25,4 +27,5 @@ module.exports = {
 
   TEXT_SIZE
   TITLE_SIZE
+  LOG_TEXT_SIZE
 }
