@@ -1,9 +1,9 @@
 # jjwxc.coffee, jjdl-js/src/_site/
 # site: http://www.jjwxc.net
 
-Site = require './_site'
 util = require '../util'
 
+Site = require './_site'
 
 _clean_index_text = (raw, join = ' ') ->
   util.clean_text [raw], join

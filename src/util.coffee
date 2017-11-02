@@ -7,6 +7,7 @@
 
   last_update
   print_json
+  json_clone
 } = require './_util/util'
 {
   pack
@@ -27,6 +28,7 @@ module.exports = {
 
   last_update
   print_json
+  json_clone
 
   pack
   pack_filename

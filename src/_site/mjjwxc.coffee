@@ -1,9 +1,9 @@
 # mjjwxc.coffee, jjdl-js/src/_site/
 # site: http://m.jjwxc.net/
 
-Site = require './_site'
 util = require '../util'
 
+Site = require './_site'
 
 class Mjjwxc extends Site
   # eg: http://m.jjwxc.net/book2/3010233?more=1&whole=1

@@ -1,9 +1,9 @@
 # myushuwu.coffee, jjdl-js/src/_site/
 # site: https://m.yushuwu.com/
 
-Site = require './_site'
 util = require '../util'
 
+Site = require './_site'
 
 class Myushuwu extends Site
 
