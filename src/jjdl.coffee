@@ -42,6 +42,4 @@ _init = ->
   pm_bridge.send {
     type: 'start'
   }
-  # FIXME
-  al.logd "FIXME: init done"
 _init()

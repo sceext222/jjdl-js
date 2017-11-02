@@ -90,6 +90,8 @@ mapDispatchToProps = (dispatch, props) ->
     # just change is_doing to false
     dispatch action.set_is_doing(false)
     dispatch op.check_cache()
+    # log for DEBUG
+    dispatch action.log('[stopped]')
   o
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(Page)
