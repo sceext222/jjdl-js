@@ -70,7 +70,7 @@ _dl_page = (that, _id, args) ->
     _send that, {
       _id
       type: 'callback'
-      payload: result.toString 'base64'  # Buffer.toString()
+      payload: result  # just base64
     }
   catch e
     _send that, {

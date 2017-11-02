@@ -24,7 +24,7 @@ file_exist = (filename) ->
 read_file = (filename) ->
   # check cache first
   if _file_cache[filename]?
-    return _file_cache[filename]
+    return Buffer.from _file_cache[filename], 'base64'
   # check no such file
   if _file_cache[filename] is null  # null, not undefined
     throw new Error "no such file #{filename}"
