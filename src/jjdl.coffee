@@ -5,8 +5,7 @@ path = require 'path'
 config = require './config'
 util = require './util'
 al = require './al'
-# FIXME
-#site = require './site'
+site = require './site'
 
 pm_bridge = require './_al/android/pm_bridge'
 
@@ -15,9 +14,6 @@ main = (site_name, uri) ->  # async
   # DEBUG
   al.logd config.P_VERSION
   al.logd "site = [#{site_name}], url = #{uri}"
-
-  # FIXME
-  site = require './site'
 
   core = site.create site_name, uri
 

@@ -2,14 +2,16 @@
 <html>
 <head>
 <meta charset="utf-8" />
-<!-- pm_bridge.html, jjdl_android/android/app/src/main/assets/ -->
+<!-- pm_bridge.html, jjdl_android/android/app/src/main/assets/
+
+  load this page with URL: file:///android_asset/pm_bridge.html
+-->
 <title>pm_bridge</title>
-<script type="text/javascript" >
-// LIB_JS INSERT POSITION //
-</script>
+<!-- js lib -->
+<script type="text/javascript" src="./lib.min.js" ></script>
 </head>
 <body>
-<!-- -->
+<!-- init test code -->
 <script type="text/javascript" >
   window.postMessage(JSON.stringify({
     type: 'init',
@@ -18,5 +20,7 @@
     },
   }));
 </script>
+<!-- jjdl_core -->
+<script type="text/javascript" src="./jjdl_core.js" ></script>
 </body>
 </html>

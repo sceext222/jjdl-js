@@ -88,7 +88,8 @@ _on_message = (raw, that) ->
     when 'init'
       _log "DEBUG: WebView UA: #{data.payload.ua}"
       # inject jjdl_core.js
-      that.injectJavaScript config.jjdl_core_js
+      # FIXME
+      #that.injectJavaScript config.jjdl_core_js
     when 'end'
       _log "[已结束]"
       config.store.dispatch action.set_is_doing(false)

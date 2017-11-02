@@ -138,13 +138,6 @@ mapStateToProps = ($$state, props) ->
   url = $$state.get 'url'
   if url.trim() is ''
     show_button = false
-  # check loaded
-  if ! $$state.getIn ['loaded', 'pm_bridge']
-    show_button = false
-    is_loading = true
-  if ! $$state.getIn ['loaded', 'jjdl_core']
-    show_button = false
-    is_loading = true
 
   {
     site: $$state.get 'site'

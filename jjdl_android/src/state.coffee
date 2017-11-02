@@ -16,8 +16,6 @@ init_state = {  # with Immutable
   # loaded flags
   loaded: {
     license: false  # assets/LICENSE
-    pm_bridge: false  # assets/pm_bridge.html
-    jjdl_core: false  # assets/jjdl_core.js
   }
 }
 

@@ -19,14 +19,6 @@ load_assets = ->
     # load LICENSE
     config.license_text = await RNFS.readFileAssets config.LICENSE_FILE
     dispatch action.set_loaded('license', true)
-    # pm_bridge.html
-    config.pm_bridge_html = await RNFS.readFileAssets config.PM_BRIDGE_HTML
-    dispatch action.set_loaded('pm_bridge', true)
-    # load lib.js first
-    config.lib_js = await RNFS.readFileAssets config.LIB_JS
-    # jjdl_core.js
-    config.jjdl_core_js = await RNFS.readFileAssets config.JJDL_CORE_JS
-    dispatch action.set_loaded('jjdl_core', true)
 
 clear_cache = ->
   (dispatch, getState) ->
