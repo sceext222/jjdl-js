@@ -33,6 +33,8 @@ _help = ->
 
       --help
       --version
+
+  LICENSE: GNU GPLv3+  <https://github.com/sceext222/jjdl-js>
   '''
 
 _version = ->

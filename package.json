@@ -7,11 +7,13 @@
   "repository": "sceext222/jjdl-js",
   "scripts": {
     "build": "coffee -o dist/ src/",
-    "pack": "browserify -o dist/jjdl-all.js dist/jjdl.js --node"
+    "pack": "browserify -o dist/jjdl-all.js dist/jjdl.js --node",
+    "min": "uglifyjs dist/jjdl-all.js -c -m -o dist/jjdl.min.js"
   },
   "devDependencies": {
     "browserify": "^14.5.0",
-    "coffeescript": "^2.0.2"
+    "coffeescript": "^2.0.2",
+    "uglify-es": "^3.1.6"
   },
   "dependencies": {
     "jquery": "^3.2.1",
