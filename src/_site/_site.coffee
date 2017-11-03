@@ -104,6 +104,10 @@ class Site  # base site
       @chapter
     }
 
+  # entry: for re-pack chapters
+  pre_pack: (data) ->
+    data
+
   # entry: pack all chapters' text to one file
   pack: (data) ->
     util.pack data

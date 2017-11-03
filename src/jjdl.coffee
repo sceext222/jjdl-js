@@ -13,13 +13,19 @@ al = require './al'
 site = require './site'
 
 
+_save_meta = (data) ->
+  meta_file = path.join config.OUTPUT_DIR, util.meta_filename(data.meta)
+  await al.save_file meta_file, util.print_json(data.meta)
+
 main = (site_name, uri) ->  # async
   core = site.create site_name, uri
 
   data = await core.main()
-  # save meta file
-  meta_file = path.join config.OUTPUT_DIR, util.meta_filename(data.meta)
-  await al.save_file meta_file, util.print_json(data.meta)
+  # first meta file
+  await _save_meta data
+  # pre-pack and second meta file
+  data = core.pre_pack data
+  await _save_meta data
 
   text = core.pack(data)
   # save result text file
@@ -60,4 +66,5 @@ _start = ->
     await p_args process.argv[2..]
   catch e
     console.log "unknow ERROR: #{e}  #{e.stack}"
+    process.exit 1
 _start()

@@ -10,12 +10,27 @@ _MARK_CHAR = ' '  # FIXME
 
 class MyushuwuC extends Myushuwu
 
-  pack: (data) ->
+  # for sub-class
+  get_site: ->
+    'myushuwu-c'
+
+  # check next chapter mark
+  check_chapter_line: (text, chapter_index) ->
+    prefix = "#{chapter_index + 1}#{_MARK_CHAR}"
+    if text.trim().startsWith prefix
+      {
+        title: text.split(_MARK_CHAR, 1)[0].trim()
+        desc: text.trim()[text.indexOf(_MARK_CHAR)..].trim()
+      }
+    else
+      null
+
+  pre_pack: (data) ->
     # DEBUG
     al.logd "repack chapters .. . "
 
     # reset site
-    data.meta.site = 'myushuwu-c'
+    data.meta.site = @get_site()
     data.meta._old_chapter = util.json_clone data.meta.chapter
 
     # concat all chapters raw text
@@ -36,8 +51,8 @@ class MyushuwuC extends Myushuwu
     }
     for i in raw_text
       # check next chapter mark
-      prefix = "#{chapter_index + 1}#{_MARK_CHAR}"
-      if i.trim().startsWith prefix
+      check = @check_chapter_line i, chapter_index
+      if check?
         # save last chapter
         data.meta.chapter[chapter_index] = one_chapter
         data.chapter[chapter_index] = {
@@ -45,10 +60,7 @@ class MyushuwuC extends Myushuwu
         }
         # reset chapter
         one_chapter_text = []
-        one_chapter = {
-          title: i.split(_MARK_CHAR, 1)[0].trim()
-          desc: i.trim()[i.indexOf(_MARK_CHAR)..].trim()
-        }
+        one_chapter = check
         chapter_index += 1
       else
         one_chapter_text.push i
@@ -60,6 +72,6 @@ class MyushuwuC extends Myushuwu
       }
     # reset _last_update
     data.meta._last_update = util.last_update()
-    super data
+    data
 
 module.exports = MyushuwuC  # class
