@@ -17,6 +17,9 @@ init_state = {  # with Immutable
   loaded: {
     license: false  # assets/LICENSE
   }
+  # for external_core
+  pm_bridge_url: null  # null: use default core
+  site_list: []
 }
 
 module.exports = init_state

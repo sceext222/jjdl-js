@@ -73,7 +73,7 @@ config = require '../../config'
 mapStateToProps = ($$state, props) ->
   {
     site: $$state.get 'site'
-    site_list: config.SITE_LIST
+    site_list: $$state.get('site_list').toJS()
   }
 
 mapDispatchToProps = (dispatch, props) ->

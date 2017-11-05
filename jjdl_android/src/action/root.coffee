@@ -12,6 +12,8 @@ A_SET_CACHE_PATH = 'a_set_cache_path'
 A_SET_IS_CLEANING = 'a_set_is_cleaning'
 A_SET_ABOUT_RIGHT = 'a_set_about_right'
 A_SET_LOADED = 'a_set_loaded'
+A_SET_PM_BRIDGE_URL = 'a_set_pm_bridge_url'
+A_SET_SITE_LIST = 'a_set_site_list'
 
 
 set_site = (site) ->
@@ -70,6 +72,18 @@ set_loaded = (type, loaded) ->
     }
   }
 
+set_pm_bridge_url = (url) ->
+  {
+    type: A_SET_PM_BRIDGE_URL
+    payload: url
+  }
+
+set_site_list = (list) ->
+  {
+    type: A_SET_SITE_LIST
+    payload: list
+  }
+
 module.exports = {
   A_SET_SITE
   A_SET_URL
@@ -80,6 +94,8 @@ module.exports = {
   A_SET_IS_CLEANING
   A_SET_ABOUT_RIGHT
   A_SET_LOADED
+  A_SET_PM_BRIDGE_URL
+  A_SET_SITE_LIST
 
   set_site
   set_url
@@ -90,4 +106,6 @@ module.exports = {
   set_is_cleaning
   set_about_right
   set_loaded
+  set_pm_bridge_url
+  set_site_list
 }

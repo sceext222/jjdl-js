@@ -34,6 +34,10 @@ reducer = ($$state, action) ->
       $$o = $$o.set 'about_right', action.payload
     when ac.A_SET_LOADED
       $$o = $$o.setIn ['loaded', action.payload.type], action.payload.loaded
+    when ac.A_SET_PM_BRIDGE_URL
+      $$o = $$o.set 'pm_bridge_url', action.payload
+    when ac.A_SET_SITE_LIST
+      $$o = $$o.set 'site_list', Immutable.fromJS(action.payload)
   $$o
 
 module.exports = reducer

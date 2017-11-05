@@ -9,13 +9,12 @@ PropTypes = require 'prop-types'
   WebView
 } = require 'react-native'
 
-config = require '../config'
-
 
 Page = cC {
   displayName: 'PageWebview'
   propTypes: {
     show_webview: PropTypes.bool.isRequired
+    pm_bridge_url: PropTypes.string.isRequired
     # children
     on_message: PropTypes.func.isRequired
     on_error: PropTypes.func.isRequired
@@ -34,7 +33,7 @@ Page = cC {
     if @props.show_webview
       (cE WebView, {
         source: {
-          uri: config.PM_BRIDGE_URL
+          uri: @props.pm_bridge_url
         }
         onError: @props.on_error
         onMessage: @_on_message
@@ -78,6 +77,7 @@ Page = cC {
 { connect } = require 'react-redux'
 Immutable = require 'immutable'
 
+config = require '../config'
 action = require '../action/root'
 
 pm_bridge = require '../pm_bridge'
@@ -87,9 +87,13 @@ mapStateToProps = ($$state, props) ->
   show_webview = false
   if $$state.get 'is_doing'
     show_webview = true
+  pm_bridge_url = $$state.get 'pm_bridge_url'
+  if ! pm_bridge_url?
+    pm_bridge_url = config.PM_BRIDGE_URL
 
   {
     show_webview
+    pm_bridge_url
   }
 
 mapDispatchToProps = (dispatch, props) ->
