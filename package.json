@@ -1,6 +1,6 @@
 {
   "name": "jjdl",
-  "version": "0.2.0-1",
+  "version": "0.2.0",
   "description": "jjdl-js: A simple text download program. ",
   "homepage": "https://github.com/sceext222/jjdl-js",
   "license": "GPL-3.0+",
@@ -22,6 +22,6 @@
     "request-promise-native": "^1.0.5"
   },
   "engines": {
-    "node": "8.x"
+    "node": "^8.8.1"
   }
 }
