@@ -33,6 +33,8 @@ last_update = ->
 print_json = (data) ->
   JSON.stringify(data, '', '    ') + '\n'
 
+json_clone = (raw) ->
+  JSON.parse JSON.stringify(raw)
 
 module.exports = {
   parse_html
@@ -41,4 +43,5 @@ module.exports = {
 
   last_update
   print_json
+  json_clone
 }
