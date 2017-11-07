@@ -77,30 +77,12 @@ _save_file = (that, _id, filename, data) ->
       payload: "ERROR: #{e}  #{e.stack}"
     }
 
-_dl_page = (that, _id, args) ->
-  try
-    result = await util.dl_page args.uri  # TODO args
-    _send that, {
-      _id
-      type: 'callback'
-      payload: result  # just base64
-    }
-  catch e
-    _send that, {
-      _id
-      type: 'callback'
-      error: true
-      payload: "ERROR: #{e}  #{e.stack}"
-    }
-
 
 _on_message = (raw, that) ->
   data = JSON.parse raw
   switch data.type
     when 'log'
       _log data.payload
-    when 'dl_page'  # with callback
-      _dl_page that, data._id, data.payload
     when 'check_cache'  # with callback
       _check_cache that, data._id, data.payload
     when 'save_file'  # with callback
@@ -117,9 +99,6 @@ _on_message = (raw, that) ->
       }
     when 'init'
       _log "DEBUG: WebView UA: #{data.payload.ua}"
-      # inject jjdl_core.js
-      # FIXME
-      #that.injectJavaScript config.jjdl_core_js
     when 'end'
       _log "[已结束]"
       config.store.dispatch action.set_is_doing(false)
