@@ -41,8 +41,7 @@ read_file = (filename) ->
 
 save_file = (filename, data) ->
   b = Buffer.from data  # always write blob data
-  # no callback or error checks here
-  pm_bridge.send {
+  await pm_bridge.with_callback {
     type: 'save_file'
     payload: {
       filename

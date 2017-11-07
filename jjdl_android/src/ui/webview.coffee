@@ -21,7 +21,9 @@ Page = cC {
   }
 
   postMessage: (text) ->
-    @_webview.postMessage text
+    if @_webview?
+      @_webview.postMessage text
+    # else: just ignore
 
   injectJavaScript: (text) ->
     @_webview.injectJavaScript text
