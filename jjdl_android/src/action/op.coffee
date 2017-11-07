@@ -1,5 +1,7 @@
 # op.coffee, jjdl_android/src/action/
 
+path = require 'path-browserify'
+
 RNFS = require 'react-native-fs'
 
 config = require '../config'
@@ -30,15 +32,22 @@ load_assets = ->
     # load LICENSE
     config.license_text = await RNFS.readFileAssets config.LICENSE_FILE
     dispatch action.set_loaded('license', true)
-    # check external_list
-    if await RNFS.exists(config.EXTERNAL_LIST)
-      raw = await RNFS.readFile config.EXTERNAL_LIST
+    # load site_list
+    load_default_site_list = true
+    external_site_list = path.join config.EXTERNAL_CORE_DIR, config.CORE_SITE_LIST
+    if await RNFS.exists(external_site_list)
+      raw = await RNFS.readFile external_site_list
+      list = _parse_list raw
+      if list?
+        dispatch action.set_site_list list
+        load_default_site_list = false
+      # ignore error
+    if load_default_site_list
+      raw = await RNFS.readFileAssets path.join(config.CORE_DIR, config.CORE_SITE_LIST)
       list = _parse_list raw
       if list?
         dispatch action.set_site_list list
       # ignore error
-    else  # load default list
-      dispatch action.set_site_list config.SITE_LIST
 
 clear_cache = ->
   (dispatch, getState) ->
@@ -58,11 +67,14 @@ start_jjdl = ->
     if url.trim() is ''
       return  # just ignore
     # check external core
-    if await RNFS.exists(config.EXTERNAL_CORE)
-      core = config.LOCAL_URL_PREFIX + config.EXTERNAL_CORE
+    external_core = path.join config.EXTERNAL_CORE_DIR, config.CORE_PM_BRIDGE
+    if await RNFS.exists(external_core)
+      core = config.FILE_URL + external_core
       dispatch action.set_pm_bridge_url(core)
       # DEBUG
       dispatch action.log("Use core: #{core}")
+    else  # use default core
+      dispatch action.set_pm_bridge_url(null)
     # start core
     dispatch action.set_is_doing(true)
 

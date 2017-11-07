@@ -24,4 +24,5 @@ android/gradle
 android/gradlew
 /dist
 
-android/app/src/main/assets/*.js
+android/app/src/main/assets/*/*.js
+android/app/src/main/assets/*/*.json

@@ -43,6 +43,7 @@ Page = cC {
         domStorageEnabled: false
         javaScriptEnabled: true
         mixedContentMode: 'always'
+        allowUniversalAccessFromFileURLs: true
 
         ref: (it) =>
           @_webview = it
@@ -91,7 +92,8 @@ mapStateToProps = ($$state, props) ->
     show_webview = true
   pm_bridge_url = $$state.get 'pm_bridge_url'
   if ! pm_bridge_url?
-    pm_bridge_url = config.PM_BRIDGE_URL
+    # default core
+    pm_bridge_url = "#{config.ANDROID_ASSET_URL}#{config.CORE_DIR}/#{config.CORE_PM_BRIDGE}"
 
   {
     show_webview
