@@ -124,9 +124,9 @@ Page = cC {
 { connect } = require 'react-redux'
 Immutable = require 'immutable'
 
+util = require '../../util'
 action = require '../../action/root'
 op = require '../../action/op'
-
 
 mapStateToProps = ($$state, props) ->
   is_doing = $$state.get 'is_doing'
@@ -139,8 +139,10 @@ mapStateToProps = ($$state, props) ->
   if url.trim() is ''
     show_button = false
 
+  site = util.parse_site_name $$state.get('site')
+
   {
-    site: $$state.get 'site'
+    site
     url
     show_button
     is_loading

@@ -93,7 +93,7 @@ _on_message = (raw, that) ->
       _send that, {
         type: 'args'
         payload: {
-          site: $$state.get 'site'
+          site: util.parse_site_name $$state.get('site')
           url: $$state.get 'url'
         }
       }
