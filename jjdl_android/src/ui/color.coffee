@@ -4,7 +4,7 @@
 # background
 BG = 'rgb(0, 0, 0)'
 BG_SEC = 'rgb(50, 50, 50)'  # second background
-BG_LEFT = ''  # TODO
+BG_LEFT = 'rgb(108, 220, 198)'
 BG_TOP = 'rgb(8, 120, 98)'
 
 BG_TOUCH = 'rgb(250, 250, 250)'  # button touch background
@@ -16,8 +16,8 @@ TEXT_SEC = 'rgb(120, 120, 120)'
 TEXT_TITLE = 'rgb(250, 250, 250)'
 
 # buttons
-BG_BTN = 'rgb(0, 0, 250)'  # primary button
-BG_BTN_DANGER = 'rgb(250, 0, 0)'  # danger button
+BG_BTN = 'rgb(8, 120, 58)'  # primary button
+BG_BTN_DANGER = 'rgb(58, 100, 28)'  # danger button
 
 
 module.exports = {

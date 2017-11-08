@@ -29,8 +29,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.5505"
-     inkscape:cx="447.1"
-     inkscape:cy="521.5"
+     inkscape:cx="224.6"
+     inkscape:cy="514.2"
      inkscape:document-units="mm"
      inkscape:current-layer="layer2"
      showgrid="false"
@@ -49,7 +49,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,15 +58,12 @@
      id="layer2"
      inkscape:label="bg"
      sodipodi:insensitive="true">
-    <rect
-       style="opacity:1;vector-effect:none;fill:#087862;fill-opacity:1;stroke:none;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+    <path
+       style="opacity:1;vector-effect:none;fill:#087862;fill-opacity:1;stroke:none;stroke-width:1.0017;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
+       d="m 98.02,52.01 c -25.49,0 -46.01,20.52 -46.01,46.01 V 926.1 c 0,25.4 20.52,46 46.01,46 H 926.1 c 25.4,0 46,-20.6 46,-46 V 98.02 c 0,-25.49 -20.6,-46.01 -46,-46.01 z M 768.5,409.5 A 102.5,102.5 0 0 1 870.9,511.9 102.5,102.5 0 0 1 768.5,614.4 102.5,102.5 0 0 1 666,511.9 102.5,102.5 0 0 1 768.5,409.5 Z"
+       transform="scale(0.2646)"
        id="rect4571"
-       width="243.4"
-       height="243.4"
-       x="13.76"
-       y="13.76"
-       rx="12.17"
-       ry="12.17" />
+       inkscape:connector-curvature="0" />
   </g>
   <g
      inkscape:label="fg"
@@ -78,11 +75,6 @@
        style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.2119px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
        d="m 40.59,52.96 v 0 a 13.56,13.56 0 0 0 -13.6,13.57 13.56,13.56 0 0 0 13.6,13.59 13.56,13.56 0 0 0 0.1,0 h 69.41 l 9.5,152.08 -65.41,-43.7 67.71,81.4 H 149 L 160.9,80.12 H 244 V 52.96 h -81.4 -54.2 z"
        id="path4568"
-       inkscape:connector-curvature="0" />
-    <path
-       style="opacity:1;vector-effect:none;fill:#ffff00;fill-opacity:1;stroke:none;stroke-width:0.2119px;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke"
-       d="m 203.3,134.3 a 27.12,27.12 0 0 0 -27.1,27.1 27.12,27.12 0 0 0 27.1,27.1 27.12,27.12 0 0 0 27.1,-27.1 27.12,27.12 0 0 0 -27.1,-27.1 z"
-       id="rect3726"
        inkscape:connector-curvature="0" />
   </g>
 </svg>

@@ -27,6 +27,7 @@ Page = cC {
     (cE View, {
       style: {
         flex: 1
+        backgroundColor: co.BG_LEFT
       } },
       (cE DrawerItems, @props)
       (cE View, {
