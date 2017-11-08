@@ -14,6 +14,8 @@ CORE_DIR = 'core'  # /sdcard/jjdl/core/
 
 
 _upgrade_each_file = (lm, rm) ->  # async
+  upgrade_flag = false
+
   for filename of rm.file
     # check skip this file
     if lm.file[filename]? and (lm.file[filename].sha256 is rm.file[filename].sha256)
@@ -30,6 +32,8 @@ _upgrade_each_file = (lm, rm) ->  # async
     lm.file[filename] = rm.file[filename]
     text = JSON.stringify(lm, '', '    ') + '\n'
     await al.save_file path.join(CORE_DIR, CORE_META), text
+    upgrade_flag = true
+  upgrade_flag
 
 # local core_meta.json placeholder
 _FAKE_LOCAL_META = {
@@ -64,10 +68,14 @@ main = ->  # async
       al.loge "BAD local #{CORE_META}"
       lm = _FAKE_LOCAL_META
   # upgrade all files
-  await _upgrade_each_file lm, meta
+  upgrade_flag = await _upgrade_each_file lm, meta
   # update local meta
   await al.save_file local_meta, raw
-  # TODO more log
+  # DEBUG
+  al.logd "core: #{meta.core_version}"
+  # upgrade comment
+  if upgrade_flag and meta.comment?
+    al.logi "NOTE: #{meta.comment}"
 
 _start = ->
   try

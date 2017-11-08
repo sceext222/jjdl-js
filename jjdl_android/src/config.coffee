@@ -1,6 +1,6 @@
 # config.coffee, jjdl_android/src/
 
-P_VERSION = 'jjdl_android version 0.2.0-3 test20171108 2244'
+P_VERSION = 'jjdl_android version 0.2.0-3 test20171108 2330'
 P_REPO = 'https://github.com/sceext222/jjdl-js'
 
 
