@@ -71,7 +71,7 @@ _gen_one_file_info = (filename) ->  # async
 _gen_core_meta = (core_dir) ->  # async
   o = {
     type: 'auto'  # 'auto', 'EOL'
-    core_version: 'unknow'  # TODO
+    core_version: ''
     file: {
       #FILE_NAME: {
       #  size: -1

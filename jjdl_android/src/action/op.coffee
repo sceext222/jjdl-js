@@ -78,10 +78,19 @@ start_jjdl = ->
     # start core
     dispatch action.set_is_doing(true)
 
+check_upgrade = ->
+  (dispatch, getState) ->
+    # DEBUG
+    dispatch action.log("DEBUG: 开始检查更新 .. . ")
+    dispatch action.set_pm_bridge_url(config.AUTO_UPGRADE)
+    dispatch action.set_is_doing(true)
+
+
 module.exports = {
   check_cache  # thunk
   load_assets  # thunk
   clear_cache  # thunk
 
   start_jjdl  # thunk
+  check_upgrade  # thunk
 }

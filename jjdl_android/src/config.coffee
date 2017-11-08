@@ -1,6 +1,6 @@
 # config.coffee, jjdl_android/src/
 
-P_VERSION = 'jjdl_android version 0.2.0-2 test20171108 0204'
+P_VERSION = 'jjdl_android version 0.2.0-3 test20171108 2244'
 P_REPO = 'https://github.com/sceext222/jjdl-js'
 
 
@@ -20,6 +20,8 @@ CORE_PM_BRIDGE = 'pm_bridge.html'
 CORE_SITE_LIST = 'site_list'
 CORE_META = 'core_meta.json'
 
+AUTO_UPGRADE = 'file:///android_asset/auto_upgrade/pm_bridge.html'
+
 
 module.exports = {
   P_VERSION
@@ -38,6 +40,8 @@ module.exports = {
   CORE_PM_BRIDGE
   CORE_SITE_LIST
   CORE_META
+
+  AUTO_UPGRADE
 
   # runtime vars
   store: null  # redux store

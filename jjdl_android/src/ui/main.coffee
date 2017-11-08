@@ -19,7 +19,7 @@ ss = require './style'
 PageStart = require './page/start'
 PageStartSite = require './page/start_site'
 PageLog = require './page/log'
-PageCache = require './page/cache'
+PageMore = require './page/more'
 PageAbout = require './page/about'
 PageAboutRight = require './page/about_right'
 
@@ -92,9 +92,9 @@ Main = DrawerNavigator {
     }
   }
   cache: {
-    screen: PageCache
+    screen: PageMore
     navigationOptions: {
-      drawerLabel: '缓存'
+      drawerLabel: '更多'
       drawerIcon: _left_icon IconF, 'download'
     }
   }
