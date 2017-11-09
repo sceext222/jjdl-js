@@ -44,7 +44,7 @@ Page = cC {
 
     (cE View, {
       style: {
-        flex: 1
+        #flex: 1
       } },
       (cE Text, {
         style: {
@@ -85,10 +85,7 @@ Page = cC {
   _render_upgrade: ->
     (cE View, {
       style: {
-        flex: 1
-        # top border
-        borderTopWidth: ss.BORDER_WIDTH
-        borderTopColor: co.BORDER
+        # TODO
       } },
       (cE Text, {
         style: {

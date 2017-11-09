@@ -78,9 +78,6 @@ Page = cC {
 
           backgroundColor: co.BG
           flexWrap: 'wrap'
-          # bottom border
-          borderBottomWidth: ss.BORDER_WIDTH
-          borderBottomColor: co.BORDER
         } })
 
   render: ->
@@ -88,35 +85,37 @@ Page = cC {
       style: {
         flex: 1
       } },
-      (cE ItemRight, {
-        type: null
-        bg: co.BG
-        on_press: @props.on_show_site
-        },
-        (cE Text, {
-          style: {
-            flex: 1
-            fontSize: ss.TITLE_SIZE
-            color: co.TEXT
-          } },
-          'Site'
-        )
-        (cE Text, {
-          style: {
-            paddingRight: ss.TOP_PADDING
-            fontSize: ss.TITLE_SIZE
-            color: co.TEXT_SEC
-          } },
-          @props.site
+      (cE View, {
+        style: {
+          # bottom border
+          borderBottomWidth: ss.BORDER_WIDTH
+          borderBottomColor: co.BORDER
+        } },
+        (cE ItemRight, {
+          type: null
+          bg: co.BG
+          on_press: @props.on_show_site
+          },
+          (cE Text, {
+            style: {
+              flex: 1
+              fontSize: ss.TITLE_SIZE
+              color: co.TEXT
+            } },
+            'Site'
+          )
+          (cE Text, {
+            style: {
+              paddingRight: ss.TOP_PADDING
+              fontSize: ss.TITLE_SIZE
+              color: co.TEXT_SEC
+            } },
+            @props.site
+          )
         )
       )
       # URL
       @_render_body()
-      # placeholder
-      (cE View, {
-        style: {
-          flex: 1
-        } })
       # start button
       @_render_button()
     )

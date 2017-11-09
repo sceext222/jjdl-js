@@ -62,9 +62,6 @@ Page = cC {
 
             flex: 1
             flexShrink: 0
-            # bottom border
-            borderBottomWidth: ss.BORDER_WIDTH
-            borderBottomColor: co.BORDER
           } },
           @props.version_text
         )

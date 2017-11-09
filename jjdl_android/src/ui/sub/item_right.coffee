@@ -27,11 +27,15 @@ ItemRight = cC {
   }
 
   _render_text: ->
+    color = co.TEXT
+    if (@props.type is 'check') and (! @props.is_check)
+      color = co.TEXT_SEC
+
     if @props.text?
       (cE Text, {
         style: {
           fontSize: ss.TEXT_SIZE
-          color: co.TEXT
+          color
         } },
         @props.text
       )
@@ -82,8 +86,6 @@ ItemRight = cC {
           flexDirection: 'row'
           alignItems: 'center'
           backgroundColor
-          borderBottomWidth: ss.BORDER_WIDTH
-          borderBottomColor: co.BORDER
           padding: ss.TOP_PADDING
           paddingRight: 0
         } },

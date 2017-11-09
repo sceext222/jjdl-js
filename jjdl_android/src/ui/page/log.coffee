@@ -30,11 +30,18 @@ Page = cC {
 
   _render_button: ->
     if @props.is_doing
-      (cE Button, {
-        text: '停止'
-        bg: co.BG_BTN  # TODO danger button
-        on_press: @props.on_stop
+      (cE View, {
+        style: {
+          # top border
+          borderTopWidth: ss.BORDER_WIDTH
+          borderTopColor: co.BORDER
+        } },
+        (cE Button, {
+          text: '停止'
+          bg: co.BG_BTN  # TODO danger button
+          on_press: @props.on_stop
         })
+      )
 
   _on_auto_scroll: ->
     # TODO improve scroll logic

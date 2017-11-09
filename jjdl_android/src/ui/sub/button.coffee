@@ -18,34 +18,39 @@ Button = cC {
   displayName: 'Button'
   propTypes: {
     text: PropTypes.string.isRequired
-    bg: PropTypes.string  # background-color
+    bg: PropTypes.string  # background-color  TODO not support this now
 
     on_press: PropTypes.func.isRequired
   }
 
   render: ->
-    backgroundColor = co.BG_BTN
-    if @props.bg?
-      backgroundColor = @props.bg
-
-    (cE TouchableNativeFeedback, {
-      onPress: @props.on_press
-      background: TouchableNativeFeedback.Ripple co.BG_TOUCH
-      },
-      (cE View, {
-        style: {
-          height: ss.TOP_HEIGHT
-          flexDirection: 'row'
-          alignItems: 'center'
-          justifyContent: 'center'
-          backgroundColor
-        } },
-        (cE Text, {
+    # TODO
+    (cE View, {
+      style: {
+        margin: ss.TOP_PADDING
+      } },
+      (cE TouchableNativeFeedback, {
+        onPress: @props.on_press
+        background: TouchableNativeFeedback.Ripple co.BG_TOUCH
+        },
+        (cE View, {
           style: {
-            fontSize: ss.TITLE_SIZE
-            color: co.TEXT_BG
+            height: ss.TOP_HEIGHT
+            flexDirection: 'row'
+            alignItems: 'center'
+            justifyContent: 'center'
+            # button border
+            borderWidth: ss.BORDER_WIDTH
+            borderColor: co.BORDER
+            borderRadius: ss.TOP_PADDING / 2
           } },
-          @props.text
+          (cE Text, {
+            style: {
+              fontSize: ss.TITLE_SIZE
+              color: co.TEXT
+            } },
+            @props.text
+          )
         )
       )
     )

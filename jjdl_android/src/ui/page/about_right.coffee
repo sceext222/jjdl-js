@@ -30,7 +30,7 @@ Page = cC {
     # TODO
     (cE Text, {
       style: {
-        color: co.TEXT
+        color: co.TEXT_SEC
       } },
       'TODO'
     )
