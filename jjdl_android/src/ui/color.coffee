@@ -1,24 +1,30 @@
 # color.coffee, jjdl_android/src/ui/
 
+# main color
+_MC_GREEN = 'hsl(120, 100%, 30%)'  # logo bg color
+_MC_BLACK = 'hsl(0, 0%, 0%)'
+_MC_WHITE = 'hsl(0, 0%, 100%)'
 
-# background
-BG = 'rgb(0, 0, 0)'
-BG_SEC = 'rgb(50, 50, 50)'  # second background
-BG_LEFT = 'rgb(108, 220, 198)'
-BG_TOP = 'rgb(8, 120, 98)'
 
-BG_TOUCH = 'rgb(250, 250, 250)'  # button touch background
-BG_CHECK = 'rgb(100, 100, 100)'
+# BG color
+BG = _MC_BLACK
+
+BG_SEC = 'hsl(120, 100%, 5%)'  # second BG
+BG_TOP = 'hsl(120, 100%, 20%)'
+BG_LEFT = 'hsl(120, 100%, 90%)'
+
+# button
+BG_BTN = 'hsl(120, 100%, 10%)'  # primary button
+BG_BTN_DANGER = 'hsl(120, 50%, 8%)'  # danger button
+
+BG_TOUCH = 'hsl(120, 100%, 40%)'  # button touch background
+BG_CHECK = 'hsl(120, 100%, 30%)'
 
 # text
-TEXT = 'rgb(220, 220, 220)'
-TEXT_SEC = 'rgb(120, 120, 120)'
-TEXT_TITLE = 'rgb(250, 250, 250)'
+TEXT_TITLE = _MC_WHITE
 
-# buttons
-BG_BTN = 'rgb(8, 120, 58)'  # primary button
-BG_BTN_DANGER = 'rgb(58, 100, 28)'  # danger button
-
+TEXT = 'hsl(0, 0%, 80%)'
+TEXT_SEC = 'hsl(0, 0%, 64%)'
 
 module.exports = {
   BG
@@ -26,13 +32,12 @@ module.exports = {
   BG_LEFT
   BG_TOP
 
+  BG_BTN
+  BG_BTN_DANGER
   BG_TOUCH
   BG_CHECK
 
   TEXT
   TEXT_SEC
   TEXT_TITLE
-
-  BG_BTN
-  BG_BTN_DANGER
 }

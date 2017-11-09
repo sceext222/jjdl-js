@@ -69,7 +69,7 @@ Page = cC {
       (cE View, {
         style: {  # special style
           height: 1
-          backgroundColor: 'rgb(250, 0, 0)'
+          backgroundColor: 'rgb(0, 250, 0)'
         } },
         @_render_webview()
       )

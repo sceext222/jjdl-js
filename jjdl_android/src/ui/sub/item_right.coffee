@@ -37,10 +37,12 @@ ItemRight = cC {
       )
 
   _render_right: ->
+    color = co.TEXT_SEC
     name = 'chevron-right'
     if @props.type is 'check'
       if @props.is_check
         name = 'check'
+        color = co.BG
       else
         name = null
     # check not render right
@@ -59,7 +61,7 @@ ItemRight = cC {
           name
           size: ss.TOP_ICON_SIZE
           style: {
-            color: co.TEXT_SEC
+            color
           } })
       )
 
