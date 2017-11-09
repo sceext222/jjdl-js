@@ -112,6 +112,11 @@ Main = DrawerNavigator {
 }, {
   drawerWidth: ss.LEFT_WIDTH
   contentComponent: PageLeft
+  contentOptions: {
+    activeTintColor: co.TEXT_BG
+    activeBackgroundColor: co.BG_SEC
+    inactiveTintColor: co.TEXT_SEC
+  }
 }
 
 module.exports = Main

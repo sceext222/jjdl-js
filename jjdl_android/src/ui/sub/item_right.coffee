@@ -31,7 +31,7 @@ ItemRight = cC {
       (cE Text, {
         style: {
           fontSize: ss.TEXT_SIZE
-          color: co.TEXT_TITLE
+          color: co.TEXT
         } },
         @props.text
       )
@@ -42,7 +42,7 @@ ItemRight = cC {
     if @props.type is 'check'
       if @props.is_check
         name = 'check'
-        color = co.BG
+        color = co.TEXT_BG
       else
         name = null
     # check not render right
@@ -66,9 +66,9 @@ ItemRight = cC {
       )
 
   render: ->
-    backgroundColor = co.BG_SEC
+    backgroundColor = co.BG
     if @props.is_check
-      backgroundColor = co.BG_CHECK
+      backgroundColor = co.BG_SEC
     if @props.bg?
       backgroundColor = @props.bg
 
@@ -82,8 +82,8 @@ ItemRight = cC {
           flexDirection: 'row'
           alignItems: 'center'
           backgroundColor
-          borderBottomWidth: 1
-          borderBottomColor: co.BG
+          borderBottomWidth: ss.BORDER_WIDTH
+          borderBottomColor: co.BORDER
           padding: ss.TOP_PADDING
           paddingRight: 0
         } },

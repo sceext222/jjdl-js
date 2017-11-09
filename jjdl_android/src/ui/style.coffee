@@ -15,6 +15,9 @@ TITLE_SIZE = 20
 
 LOG_TEXT_SIZE = 10
 
+# border
+BORDER_WIDTH = 1
+
 # stylesheet TODO
 
 
@@ -28,4 +31,6 @@ module.exports = {
   TEXT_SIZE
   TITLE_SIZE
   LOG_TEXT_SIZE
+
+  BORDER_WIDTH
 }

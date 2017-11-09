@@ -32,7 +32,7 @@ Page = cC {
     if @props.is_doing
       (cE Button, {
         text: '停止'
-        bg: co.BG_BTN_DANGER
+        bg: co.BG_BTN  # TODO danger button
         on_press: @props.on_stop
         })
 

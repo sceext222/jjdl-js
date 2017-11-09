@@ -13,6 +13,7 @@ co = require '../color'
 ss = require '../style'
 
 Top = require '../sub/top'
+FullScroll = require '../sub/full_scroll'
 Button = require '../sub/button'
 
 
@@ -48,7 +49,7 @@ Page = cC {
       (cE Text, {
         style: {
           fontSize: ss.TITLE_SIZE
-          color: co.TEXT_TITLE
+          color: co.TEXT
           padding: ss.TOP_PADDING
         } },
         '缓存'
@@ -85,11 +86,14 @@ Page = cC {
     (cE View, {
       style: {
         flex: 1
+        # top border
+        borderTopWidth: ss.BORDER_WIDTH
+        borderTopColor: co.BORDER
       } },
       (cE Text, {
         style: {
           fontSize: ss.TITLE_SIZE
-          color: co.TEXT_TITLE
+          color: co.TEXT
           padding: ss.TOP_PADDING
         } },
         '更新'
@@ -113,8 +117,10 @@ Page = cC {
         text: '更多'
         on_nav: @props.on_menu
         })
-      @_render_cache()
-      @_render_upgrade()
+      (cE FullScroll, null,
+        @_render_cache()
+        @_render_upgrade()
+      )
     )
 }
 

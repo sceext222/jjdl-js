@@ -1,43 +1,39 @@
 # color.coffee, jjdl_android/src/ui/
 
 # main color
-_MC_GREEN = 'hsl(120, 100%, 30%)'  # logo bg color
 _MC_BLACK = 'hsl(0, 0%, 0%)'
 _MC_WHITE = 'hsl(0, 0%, 100%)'
-
+_MC_GRAY = 'hsl(0, 0%, 50%)'
 
 # BG color
 BG = _MC_BLACK
-
-BG_SEC = 'hsl(120, 100%, 5%)'  # second BG
-BG_TOP = 'hsl(120, 100%, 20%)'
-BG_LEFT = 'hsl(120, 100%, 90%)'
+BG_SEC = _MC_GRAY
 
 # button
-BG_BTN = 'hsl(120, 100%, 10%)'  # primary button
-BG_BTN_DANGER = 'hsl(120, 50%, 8%)'  # danger button
+BG_BTN = _MC_GRAY
+# TODO danger button
 
-BG_TOUCH = 'hsl(120, 100%, 40%)'  # button touch background
-BG_CHECK = 'hsl(120, 100%, 30%)'
+BG_TOUCH = _MC_WHITE
+
+# border
+BORDER = _MC_GRAY
 
 # text
-TEXT_TITLE = _MC_WHITE
+TEXT = _MC_WHITE
+TEXT_SEC = _MC_GRAY
+TEXT_BG = _MC_BLACK
 
-TEXT = 'hsl(0, 0%, 80%)'
-TEXT_SEC = 'hsl(0, 0%, 64%)'
 
 module.exports = {
   BG
   BG_SEC
-  BG_LEFT
-  BG_TOP
 
   BG_BTN
-  BG_BTN_DANGER
   BG_TOUCH
-  BG_CHECK
+
+  BORDER
 
   TEXT
   TEXT_SEC
-  TEXT_TITLE
+  TEXT_BG
 }

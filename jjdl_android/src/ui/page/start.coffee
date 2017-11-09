@@ -76,8 +76,11 @@ Page = cC {
           color: co.TEXT
           fontFamily: 'monospace'
 
-          backgroundColor: co.BG_SEC
+          backgroundColor: co.BG
           flexWrap: 'wrap'
+          # bottom border
+          borderBottomWidth: ss.BORDER_WIDTH
+          borderBottomColor: co.BORDER
         } })
 
   render: ->
@@ -87,14 +90,14 @@ Page = cC {
       } },
       (cE ItemRight, {
         type: null
-        bg: co.BG_TOP
+        bg: co.BG
         on_press: @props.on_show_site
         },
         (cE Text, {
           style: {
             flex: 1
             fontSize: ss.TITLE_SIZE
-            color: co.TEXT_TITLE
+            color: co.TEXT
           } },
           'Site'
         )
@@ -102,7 +105,7 @@ Page = cC {
           style: {
             paddingRight: ss.TOP_PADDING
             fontSize: ss.TITLE_SIZE
-            color: co.TEXT
+            color: co.TEXT_SEC
           } },
           @props.site
         )

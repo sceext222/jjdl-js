@@ -9,6 +9,9 @@ PropTypes = require 'prop-types'
   WebView
 } = require 'react-native'
 
+co = require './color'
+ss = require './style'
+
 
 Page = cC {
   displayName: 'PageWebview'
@@ -49,7 +52,7 @@ Page = cC {
           @_webview = it
         # special style
         style: {
-          height: 1
+          height: ss.BORDER_WIDTH
           backgroundColor: 'rgb(0, 0, 250)'  # FIXME strange BUG
         }
       })
@@ -68,7 +71,7 @@ Page = cC {
       # a hidden webview
       (cE View, {
         style: {  # special style
-          height: 1
+          height: ss.BORDER_WIDTH
           backgroundColor: 'rgb(0, 250, 0)'
         } },
         @_render_webview()

@@ -56,12 +56,15 @@ Page = cC {
           selectable: true
           style: {
             fontSize: ss.TEXT_SIZE
-            color: co.TEXT
+            color: co.TEXT_SEC
             padding: ss.TOP_PADDING
             paddingTop: 0
 
             flex: 1
             flexShrink: 0
+            # bottom border
+            borderBottomWidth: ss.BORDER_WIDTH
+            borderBottomColor: co.BORDER
           } },
           @props.version_text
         )

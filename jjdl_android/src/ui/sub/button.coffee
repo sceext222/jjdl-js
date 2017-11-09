@@ -43,7 +43,7 @@ Button = cC {
         (cE Text, {
           style: {
             fontSize: ss.TITLE_SIZE
-            color: co.TEXT_TITLE
+            color: co.TEXT_BG
           } },
           @props.text
         )

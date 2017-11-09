@@ -32,7 +32,7 @@ _top_button = (onPress, name) ->
         name
         size: ss.TOP_ICON_SIZE
         style: {
-          color: co.TEXT
+          color: co.TEXT_SEC
         } })
     )
   )
@@ -64,20 +64,20 @@ Top = cC {
 
     (cE View, {
       style: {
-        backgroundColor: co.BG_TOP
+        backgroundColor: co.BG
         height: ss.TOP_HEIGHT
         flexDirection: 'row'
         alignItems: 'center'
 
-        borderBottomWidth: 1
-        borderBottomColor: co.BG
+        borderBottomWidth: ss.BORDER_WIDTH
+        borderBottomColor: co.BORDER
       } },
       @_render_left()
       (cE Text, {
         style: {
           flex: 1
           fontSize: ss.TITLE_SIZE
-          color: co.TEXT_TITLE
+          color: co.TEXT
           padding: ss.TOP_PADDING
           paddingLeft
         } },
