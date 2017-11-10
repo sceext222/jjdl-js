@@ -18,6 +18,7 @@
   clean_html_text
   clean_text
   indent_line
+  get_first_number
 } = require './_util/text'
 
 
@@ -37,4 +38,5 @@ module.exports = {
   clean_html_text
   clean_text
   indent_line
+  get_first_number
 }

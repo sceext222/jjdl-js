@@ -1,12 +1,17 @@
 # myushuwu_c.coffee, jjdl-js/src/_site/
 # re-pack chapters of myushuwu
+#
+# support chapter title:
+#   '1 XXX'   '2 YYY'   '3 ZZZ'
+#   '01'      '02'      '03'
+#   '01 XXX'  '02 YYY'  '03 ZZZ'
 
 util = require '../util'
 al = require '../al'
 
 Myushuwu = require './myushuwu'
 
-_MARK_CHAR = ' '  # FIXME
+_NUM_CHAR = '0123456789'
 
 class MyushuwuC extends Myushuwu
 
@@ -16,12 +21,27 @@ class MyushuwuC extends Myushuwu
 
   # check next chapter mark
   check_chapter_line: (text, chapter_index) ->
-    prefix = "#{chapter_index + 1}#{_MARK_CHAR}"
-    if text.trim().startsWith prefix
-      {
-        title: text.split(_MARK_CHAR, 1)[0].trim()
-        desc: text.trim()[text.indexOf(_MARK_CHAR)..].trim()
+    # skip start number, eg:  '01'  '02'  '03'
+    for i in [0... text.length]
+      if _NUM_CHAR.indexOf(text[i]) is -1
+        break
+    # check full number
+    if i is text.length
+      n = Number.parseInt text
+      if n is (chapter_index + 1)
+        return {
+          title: text.trim()
+          desc: ''
+        }
+      return null
+    else  # just trim(), not check special char
+      o = {
+        title: text[0... i].trim()
+        desc: text[i ..].trim()
       }
+    n = Number.parseInt text[0... i]
+    if n is (chapter_index + 1)
+      o
     else
       null
 

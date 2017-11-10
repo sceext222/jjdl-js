@@ -51,4 +51,6 @@ _init = ->
   pm_bridge.send {
     type: 'start'
   }
+  # DEBUG
+  console.log "DEBUG: init done."
 _init()

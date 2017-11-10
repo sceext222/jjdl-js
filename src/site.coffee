@@ -5,7 +5,7 @@ Mjjwxc = require './_site/mjjwxc'
 Myushuwu = require './_site/myushuwu'
 MyushuwuC = require './_site/myushuwu_c'
 MyushuwuC2 = require './_site/myushuwu_c2'
-
+MyushuwuC3 = require './_site/myushuwu_c3'
 
 SITE_LIST = {
   'jjwxc': Jjwxc
@@ -13,6 +13,7 @@ SITE_LIST = {
   'myushuwu': Myushuwu
   'myushuwu-c': MyushuwuC
   'myushuwu-c2': MyushuwuC2
+  'myushuwu-c3': MyushuwuC3
 }
 
 
