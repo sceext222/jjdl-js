@@ -1,0 +1,27 @@
+{
+  "name": "jjdl",
+  "version": "0.2.2",
+  "description": "jjdl-js: A simple text download program. ",
+  "homepage": "https://github.com/sceext222/jjdl-js",
+  "license": "GPL-3.0+",
+  "repository": "sceext222/jjdl-js",
+  "scripts": {
+    "build": "coffee -o dist/ src/",
+    "pack": "browserify -o dist/jjdl-all.js dist/jjdl.js --node",
+    "min": "uglifyjs dist/jjdl-all.js -c -m -o dist/jjdl.min.js"
+  },
+  "devDependencies": {
+    "browserify": "^14.5.0",
+    "coffeescript": "^2.0.2",
+    "uglify-es": "^3.1.6"
+  },
+  "dependencies": {
+    "jquery": "^3.2.1",
+    "jsdom": "^11.3.0",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "engines": {
+    "node": "^8.8.1"
+  }
+}
