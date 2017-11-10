@@ -78,6 +78,7 @@ _gen_core_meta = (core_dir) ->  # async
       #  sha256: ''  # hex
       #}
     }
+    comment: 'TODO'
   }
 
   list = await fs_readdir core_dir
