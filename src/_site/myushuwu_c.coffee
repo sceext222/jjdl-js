@@ -12,7 +12,6 @@ al = require '../al'
 Myushuwu = require './myushuwu'
 
 _NUM_CHAR = '0123456789'
-_MARK_CHAR = ' '  # special
 
 class MyushuwuC extends Myushuwu
 
@@ -35,13 +34,7 @@ class MyushuwuC extends Myushuwu
           desc: ''
         }
       return null
-    # check special char
-    if text[i] is _MARK_CHAR
-      o = {
-        title: text[0... i].trim()
-        desc: text[i + 1 ..].trim()
-      }
-    else
+    else  # just trim(), not check special char
       o = {
         title: text[0... i].trim()
         desc: text[i ..].trim()

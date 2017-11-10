@@ -1,5 +1,7 @@
 # text.coffee, jjdl-js/src/_util/
 
+_NUM_CHAR = '0123456789'
+
 
 clean_html_text = (raw) ->
   o = []
@@ -34,9 +36,35 @@ indent_line = (raw, prefix = '  ') ->
   o.join '\n'
 
 
+# get first number from one line, eg: 'X 123 Y'
+get_first_number = (raw, default_value = null) ->
+  start = null
+  end = null
+  # scan num char
+  for i in [0... raw.length]
+    if (! start?) and (_NUM_CHAR.indexOf(raw[i]) != -1)
+      start = i
+    else if (start?) and (_NUM_CHAR.indexOf(raw[i]) is -1)
+      end = i
+      break
+  # check no number
+  if ! start?
+    if default_value?
+      return default_value
+    else
+      throw new Error "no number in text: `#{raw}`"
+  # check no end
+  if ! end?
+    end = raw.length
+  # parse number
+  Number.parseInt raw[start ... end]
+
+
 module.exports = {
   clean_html_text
   clean_text
 
   indent_line
+
+  get_first_number
 }

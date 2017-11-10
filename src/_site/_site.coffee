@@ -54,6 +54,9 @@ class Site  # base site
   parse_index: ($) ->
     throw new Error "not implemented"  # MUST be implemented by sub class
 
+  get_all_index: ->  # async
+    await return
+
   # download all chapters
   dl_chapters: ->  # async
     # TODO support multi-thread download
@@ -85,6 +88,8 @@ class Site  # base site
     # process index page
     $ = await @dl_index @uri
     @meta = @parse_index $
+
+    await @get_all_index()
     # add meta
     @meta.url = @uri
     @meta.opt = opt
