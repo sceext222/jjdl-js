@@ -17,8 +17,8 @@ public class MainActivity extends ReactActivity {
     }
 
     @Override
-    public void onCreate(Bundle saved) {
-        super.onCreate(saved);
+    public void onCreate(Bundle state) {
+        super.onCreate(state);
 
         getWindow().setStatusBarColor(Color.BLACK);
     }

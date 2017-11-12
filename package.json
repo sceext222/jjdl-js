@@ -9,7 +9,6 @@
     "build": "coffee -o dist/ src/",
     "lib": "browserify -o dist/lib.js -r buffer -r path -r url -r jquery -r jsdom -r request -r request-promise-native",
     "min": "uglifyjs dist/lib.js -c -m -o dist/lib.min.js",
-
     "pack": "browserify -o dist/jjdl_core.js -x buffer -x path -x url -x jquery -x jsdom -x request -x request-promise-native dist/jjdl.js",
     "pack_upgrade": "browserify -o dist/upgrade.js -x buffer -x path -x url -x jquery -x jsdom -x request -x request-promise-native dist/tool/upgrade.js"
   },
@@ -17,7 +16,7 @@
     "browserify": "^14.5.0",
     "coffeescript": "^2.0.2",
     "react-native-cli": "^2.0.1",
-    "uglify-es": "^3.1.6"
+    "uglify-es": "^3.1.9"
   },
   "dependencies": {
     "jquery": "^3.2.1",
