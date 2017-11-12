@@ -1,6 +1,6 @@
 {
   "name": "jjdl-android",
-  "version": "0.2.0-6",
+  "version": "0.2.0",
   "license": "GPL-3.0+",
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
