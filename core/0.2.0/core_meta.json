@@ -1,6 +1,6 @@
 {
     "type": "auto",
-    "core_version": "jjdl-js version 0.2.2 test20171111 0151",
+    "core_version": "jjdl-js version 0.2.3-1 test20171114 2040",
     "file": {
         "LICENSE": {
             "size": 35141,
@@ -11,30 +11,30 @@
             "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
         },
         "jjdl_core.js": {
-            "size": 39153,
-            "sha256": "749c22055e260092f00a5eea09d852062d0fab442fb3e66b9041185291707fa4"
+            "size": 41174,
+            "sha256": "9afde1394cae072ce209346b5d005f216038cb983869f6579c8b3b4c889de4e3"
         },
         "lib.min.js": {
             "size": 3307506,
             "sha256": "85cc4eb485aa0dd0e7e93f6b35e48375e8191fb86c0048e4afa3867d7c7e8936"
         },
         "package.json": {
-            "size": 1081,
-            "sha256": "0e0a311d3c5e0e4bf4920eb0feb61a1b5db6d030debf3c0a2ec0a90430c142bf"
+            "size": 1082,
+            "sha256": "fdac80250c29b65f3baab24c07062a51c688402daeed8f4bb127d0c0782fdbb1"
         },
         "pm_bridge.html": {
             "size": 550,
             "sha256": "ccca925701abae7893d8f25e03684c6933dac651610d298685ba1bfe89f4b272"
         },
         "site_list": {
-            "size": 175,
-            "sha256": "117ba7bc1269173670858e6593e6665affa5439f56fcf397d4a4d44df751c079"
+            "size": 228,
+            "sha256": "cf9bc7542d834faf1e7e0541ef59d305f837c998b4431a25ce3af3bf56408cd1"
         },
         "yarn.lock": {
             "size": 52380,
-            "sha256": "ad67bd4cb9ad09e33b9e01e790370269584a31f2aad20814ffe0e13346e5bdad"
+            "sha256": "a0da03f7a4dce4563ab606d67422e1d421ef26292923905a1fddef50d86c2eb9"
         }
     },
     "comment": "jjdl 已更新, 请重启本应用.",
-    "_last_update": "2017-11-12T08:34:31.964Z"
+    "_last_update": "2017-11-14T12:58:25.916Z"
 }
