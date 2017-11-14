@@ -2,18 +2,22 @@
 
 Jjwxc = require './_site/jjwxc'
 Mjjwxc = require './_site/mjjwxc'
-Myushuwu = require './_site/myushuwu'
-MyushuwuC = require './_site/myushuwu_c'
-MyushuwuC2 = require './_site/myushuwu_c2'
-MyushuwuC3 = require './_site/myushuwu_c3'
+
+Myushuwu   = require './_site/myushuwu/myushuwu'
+MyushuwuC  = require './_site/myushuwu/myushuwu_c'
+MyushuwuC2 = require './_site/myushuwu/myushuwu_c2'
+MyushuwuC3 = require './_site/myushuwu/myushuwu_c3'
+MyushuwuC4 = require './_site/myushuwu/myushuwu_c4'
 
 SITE_LIST = {
   'jjwxc': Jjwxc
   'mjjwxc': Mjjwxc
+
   'myushuwu': Myushuwu
   'myushuwu-c': MyushuwuC
   'myushuwu-c2': MyushuwuC2
   'myushuwu-c3': MyushuwuC3
+  'myushuwu-c4': MyushuwuC4
 }
 
 

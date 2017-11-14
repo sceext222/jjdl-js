@@ -1,23 +1,23 @@
-# myushuwu_c2.coffee, jjdl-js/src/_site/
+# myushuwu_c2.coffee, jjdl-js/src/_site/myushuwu/
 # re-pack chapters of myushuwu
 #
 # support chapter title:
 #   '第一章'  '第二章'
 
-util = require '../util'
+{ CBase } = require './_c_base'
 
-MyushuwuC = require './myushuwu_c'
 
 _MARK_CHAR = ['第', '章']
 _N_CHAR = '一二三四五六七八九十百千'
 
 _N_MAX = 8
 
-class MyushuwuC2 extends MyushuwuC
+class MyushuwuC2 extends CBase
 
   get_site: ->
     'myushuwu-c2'
 
+  # for sub-class
   get_n_char: ->
     _N_CHAR
 

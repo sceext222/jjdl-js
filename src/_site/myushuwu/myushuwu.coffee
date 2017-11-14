@@ -1,11 +1,11 @@
-# myushuwu.coffee, jjdl-js/src/_site/
+# myushuwu.coffee, jjdl-js/src/_site/myushuwu/
 # site: https://m.yushuwu.com/
 
-util = require '../util'
-al = require '../al'
-cache = require '../cache'
+util = require '../../util'
+al = require '../../al'
+cache = require '../../cache'
 
-Site = require './_site'
+Site = require '../_site'
 
 _SITE_LIST_REVERSE_MARK = 'ul,li{transform: rotate(180deg);}'
 

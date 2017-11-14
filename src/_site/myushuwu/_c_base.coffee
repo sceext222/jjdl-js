@@ -1,49 +1,23 @@
-# myushuwu_c.coffee, jjdl-js/src/_site/
+# _c_base.coffee, jjdl-js/src/_site/myushuwu/
 # re-pack chapters of myushuwu
-#
-# support chapter title:
-#   '1 XXX'   '2 YYY'   '3 ZZZ'
-#   '01'      '02'      '03'
-#   '01 XXX'  '02 YYY'  '03 ZZZ'
 
-util = require '../util'
-al = require '../al'
+util = require '../../util'
+al = require '../../al'
 
 Myushuwu = require './myushuwu'
 
-_NUM_CHAR = '0123456789'
 
-class MyushuwuC extends Myushuwu
+N_CHAR = '0123456789'
+
+class CBase extends Myushuwu
 
   # for sub-class
   get_site: ->
-    'myushuwu-c'
+    throw new Error 'not implemented'
 
   # check next chapter mark
   check_chapter_line: (text, chapter_index) ->
-    # skip start number, eg:  '01'  '02'  '03'
-    for i in [0... text.length]
-      if _NUM_CHAR.indexOf(text[i]) is -1
-        break
-    # check full number
-    if i is text.length
-      n = Number.parseInt text
-      if n is (chapter_index + 1)
-        return {
-          title: text.trim()
-          desc: ''
-        }
-      return null
-    else  # just trim(), not check special char
-      o = {
-        title: text[0... i].trim()
-        desc: text[i ..].trim()
-      }
-    n = Number.parseInt text[0... i]
-    if n is (chapter_index + 1)
-      o
-    else
-      null
+    throw new Error 'not implemented'  # for sub-class
 
   pre_pack: (data) ->
     # DEBUG
@@ -82,6 +56,9 @@ class MyushuwuC extends Myushuwu
         one_chapter_text = []
         one_chapter = check
         chapter_index += 1
+        # support reset chapter_index
+        if check._chapter_index?
+          chapter_index = check._chapter_index
       else
         one_chapter_text.push i
     # check add last chapter
@@ -94,4 +71,8 @@ class MyushuwuC extends Myushuwu
     data.meta._last_update = util.last_update()
     data
 
-module.exports = MyushuwuC  # class
+module.exports = {
+  N_CHAR
+
+  CBase  # class
+}
