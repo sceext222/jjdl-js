@@ -1,0 +1,40 @@
+{
+    "type": "auto",
+    "core_version": "jjdl-js version 0.2.2 test20171111 0151",
+    "file": {
+        "LICENSE": {
+            "size": 35141,
+            "sha256": "589ed823e9a84c56feb95ac58e7cf384626b9cbf4fda2a907bc36e103de1bad2"
+        },
+        "README.md": {
+            "size": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "jjdl_core.js": {
+            "size": 39153,
+            "sha256": "749c22055e260092f00a5eea09d852062d0fab442fb3e66b9041185291707fa4"
+        },
+        "lib.min.js": {
+            "size": 3307506,
+            "sha256": "85cc4eb485aa0dd0e7e93f6b35e48375e8191fb86c0048e4afa3867d7c7e8936"
+        },
+        "package.json": {
+            "size": 1081,
+            "sha256": "0e0a311d3c5e0e4bf4920eb0feb61a1b5db6d030debf3c0a2ec0a90430c142bf"
+        },
+        "pm_bridge.html": {
+            "size": 550,
+            "sha256": "ccca925701abae7893d8f25e03684c6933dac651610d298685ba1bfe89f4b272"
+        },
+        "site_list": {
+            "size": 175,
+            "sha256": "117ba7bc1269173670858e6593e6665affa5439f56fcf397d4a4d44df751c079"
+        },
+        "yarn.lock": {
+            "size": 52380,
+            "sha256": "ad67bd4cb9ad09e33b9e01e790370269584a31f2aad20814ffe0e13346e5bdad"
+        }
+    },
+    "comment": "jjdl 已更新, 请重启本应用.",
+    "_last_update": "2017-11-12T08:34:31.964Z"
+}

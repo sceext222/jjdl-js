@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<!-- pm_bridge.html, jjdl_android external_core
+
+  /sdcard/jjdl/core/
+-->
+<title>pm_bridge (external core)</title>
+<!-- js lib -->
+<script type="text/javascript" src="./lib.min.js" ></script>
+</head>
+<body>
+<!-- init test code -->
+<script type="text/javascript" >
+  window.postMessage(JSON.stringify({
+    type: 'init',
+    payload: {
+      ua: window.navigator.userAgent,
+    },
+  }));
+</script>
+<!-- jjdl_core -->
+<script type="text/javascript" src="./jjdl_core.js" ></script>
+</body>
+</html>
