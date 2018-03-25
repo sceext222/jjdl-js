@@ -15,6 +15,7 @@ co = require '../color'
 ss = require '../style'
 
 ItemRight = require '../sub/item_right'
+Input = require '../sub/input'
 Button = require '../sub/button'
 
 
